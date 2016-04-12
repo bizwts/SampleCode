@@ -1,0 +1,295 @@
+<div class="page page-tasks">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="task-container" data-ng-controller="todo_list">
+            <section class="panel panel-default">
+                <div class="panel-heading"></div>
+                <div class="panel-body">
+                    <form class="add_task form-validation" name="form_constraints" data-ng-submit="add()" novalidate>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" capitalize placeholder="What needs to be done?" class="form-control add-task" data-ng-model="todo_fields.newTask" required ng-class="ngInvalidRequired" autofocus>
+                                    <a type="submit" class="submit-button" data-ng-click="add()">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="" id="" capitalize class="form-control" rows="4" data-ng-model="todo_fields.note" placeholder="Note" required ng-class="ngInvalidRequired"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="text" data-ng-model="cdl_case_ref" capitalize class="form-control" placeholder="Case #" ng-change="get_cases()"
+                                    typeahead="case as case.number+', '+case.case_type for case in cases | filter:$viewValue | orderBy:'number' | limitTo:8" >
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" data-ng-model="member_ref" capitalize class="form-control" placeholder="Search All Member" ng-class="form-control" 
+                                    typeahead="member as member.last_name +' '+member.first_name for member in getMember($viewValue)"   typeahead-template-url="customTemplate.html" >
+
+                                    <script type="text/ng-template" id="customTemplate.html">
+                                     <a>
+
+                                       <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+                                    </a>
+                                    </script>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" data-ng-model="company_ref" capitalize class="form-control" placeholder="Search All Company" ng-class="form-control" 
+                                    typeahead="company as company.name for company in getCompany($viewValue)"   typeahead-template-url="customTemplate.html" >
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" data-ng-model="attorney_ref" capitalize class="form-control" placeholder="Search All Attorney" ng-class="form-control" 
+                                    typeahead="attorney as attorney.last_name +' '+attorney.first_name for attorney in getAttorney($viewValue)"   typeahead-template-url="customTemplate.html" >
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" data-ng-model="associate_ref" capitalize class="form-control" placeholder="Search All Associate" ng-class="form-control" 
+                                    typeahead="assoc as assoc.Lname +' '+assoc.Fname for assoc in getAssociate($viewValue)"   typeahead-template-url="customTemplate.html" >
+                                </div>
+    			    </div>
+                        </div>
+    			        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="input-group ui-datepicker">
+        								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        								<input type="text"  data-ng-controller="DatepickerDemoCtrl"
+        									   class="form-control"
+        									   datepicker-popup="MMM dd yyyy hh:mm:ss a"
+        									   data-ng-model="todo_fields.due_date"
+        									   is-open="opened"
+        									   min="minDate"
+        									   max="'2015-06-22'"
+        									   datepicker-options="dateOptions"
+        									   placeholder="Due Date"
+        									   close-text="Close">
+        							</div>
+        						</div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <div class="btn-group">
+                                            <button type="button" ng-click="get_priority(0,'isLow')" class="btn btn-default" ng-class="{'btn-warning':isLow}">Low</button>
+                                            <button type="button" ng-click="get_priority(1,'isNormal')" class="btn btn-default" ng-class="{'btn-primary':isNormal}">Normal</button>
+                                            <button type="button" ng-click="get_priority(2,'isUrgent')" class="btn btn-default" ng-class="{'btn-danger':isUrgent}">Urgent</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" data-ng-model="assign_to">
+                                        <option value="">Assign To</option>
+                                        <option ng-repeat="assign in assign_arr" value="{{assign.value}}">{{assign.title}}</option>
+                                    </select>
+                                </div>
+                                <!--{{assign_arr | json}}-->
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-success">SAVE</button>
+                                </div>
+                            </div>
+    			        </div>
+                            
+                    </form>
+                </div>
+            </section>
+            
+                <section>
+                    <div class="table-filters">
+                        <div class="row">
+                            <form name="search_form" novalidate>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-xs-3">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text"
+                                                       placeholder="Search by title"
+                                                       class="form-control"
+                                                       ng-model="Config.general.searchtasktodo"
+                                                       >
+                                                </div>    
+                                            </div>
+                                            <div class="col-sm-3 col-xs-3">
+                                                <button class="btn btn-sm btn-info" type="submit" ng-click="updateTableData()">Search</button>
+                                                <button class="btn btn-sm btn-warning" type="button" ng-click="clearSearch()">Clear</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <br>
+                            <div class="col-sm-5 col-xs-4 pull-right">
+                                <form>
+                                    <label class="pull-right text-muted"><em>Total {{total_notes}} Notes</em></label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="filters list-inline nav nav-tabs">
+                        <li data-ng-class="{active: statusFilter == ''}">
+                            <a href="" 
+                               data-toggle="tab"
+                               data-ng-click="filter('all')"
+                               >All</a>
+                        </li>
+                        <li data-ng-class="{active: statusFilter.completed == false }">
+                            <a href=""
+                               data-toggle="tab"
+                               data-ng-click="filter('active')"
+                               >Active</a>
+                        </li>
+                        <li data-ng-class="{active: statusFilter.completed == true }">
+                            <a href=""
+                               data-toggle="tab"
+                               data-ng-click="filter('completed')"
+                               >Completed</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!--{{tasks | json}}-->
+                <section  data-ng-cloak>
+                    <ul class="task-list list-unstyled">
+                        <li ng-repeat="task in tasks| filter:statusFilter track by $index | orderBy:'id':true" 
+                            data-ng-class="{completed: task.completed, editing: task == editedTask}">
+                            <span class="view" id="task{{task.id}}">
+                                <input type="checkbox"
+                                        data-ng-model="task.checkinfo"
+                                       class="toggle-task"
+                                       ng-click="confirmmodel(task)"
+                                       > 
+                                <span class="box-text" ng-if="task.completed == false || task.completed == 'false'"><small><i>Is this Completed?</i></small></span>
+                                <span class="box-text" ng-if="task.completed == true || task.completed == 'true'"><small><i>Re-activate Note?</i></small></span>
+                                <span ng-if="task.priority == 0" class="label label-warning">Low</span>
+                                <span ng-if="task.priority == 1" class="label label-primary">Normal</span>
+                                <span ng-if="task.priority == 2" class="label label-danger">Urgent</span>
+                                <label><h4 ng-if="task.completed == false || task.completed == 'false'" data-ng-dblclick="edit(task)">{{task.task_todo}}</h4>
+                                <label><h4 ng-if="task.completed == true || task.completed == 'true'">{{task.task_todo}}</h4>
+                                    <span>Created by {{task.user_name}} on {{task.date_created}}<br/></span>
+                                    <span ng-if="task.completed" class="text text-info">Status: Completed<br/></span>
+                                    <span ng-if="task.completed == true || task.completed == 'true'">Completed by {{task.user_name}} on {{task.date_completed| date:"MMM dd yyyy hh:mm a"}}<br/></span>
+                                    <span ng-if="task.due_date != '' && task.due_date != null">Due Date: {{task.due_date| date:"MMM dd yyyy hh:mm a"}}<br/></span>
+                                    <span ng-if="task.emp_number != '' && task.emp_number != null">Assign To: {{task.emp_last_name}} {{task.emp_first_name}}<br/></span>
+                                    <span ng-if="task.cdl_case_ref != '' && task.cdl_case_ref != null">(Case: {{task.cdl_case_ref}})</span>
+                                    <span ng-if="task.member_ref != '' && task.member_ref != null">(Member: {{task.mem_last_name}} {{task.mem_first_name}})</span>
+                                    <span ng-if="task.company_ref != '' && task.company_ref != null">(Company: {{task.com_name}})</span>
+                                    <span ng-if="task.attorney_ref != '' && task.attorney_ref != null">(Attorney: {{task.attr_last_name}} {{task.attr_first_name}})</span>
+                                    <span ng-if="task.associate_ref != '' && task.associate_ref != null">(Associate: {{task.assoc_last_name}} {{task.assoc_first_name}})</span>
+                                
+                                <div class="callout callout-info">
+                                    <p ng-repeat="log in task.task_list.slice().reverse()" ng-bind-html="log.note">
+<!--                                        {{log.note}}-->
+                                        <br/>
+                                        <small ng-if="log.note != ''"><i>- from {{log.user_name}} on {{log.date | date:"MMM dd yyyy hh:mm a"}}</i></small>
+                                    </p>
+                                </div>
+                                </label>
+                                <span class="glyphicon glyphicon-pencil" ng-if="task.completed == false || task.completed == 'false'"
+                                      data-ng-click="edit(task)"></span>
+                                <span class="glyphicon glyphicon-remove" ng-if="task.completed == false || task.completed == 'false'"
+                                      data-ng-click="remove(task, $index)"
+                                      ></span>
+                            </span>
+                            <form data-ng-submit="doneEditing(task, $index)">
+                                <input type="text"
+                                       class="edit edit_form form-control"
+                                       data-ng-trim="false"
+                                       data-ng-model="task.task_todo"
+                                       data-task-focus="task == editedTask" readonly="readonly">
+                                       <div class="form-group">
+                                            <textarea capitalize name="" id="" ng-init="task.note = ''" class="edit form-control" rows="4" data-ng-model="task.note" placeholder="Note"></textarea>
+                                       </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <select class="edit form-control" data-ng-model="task.assign_to" ng-options="assign.value as assign.title for assign in assign_arr">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="edit ui-checkbox"><input type="checkbox" data-ng-model="task.email_emp" ng-true-value="true" ng-false-value="false"><span>Email</span></label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="submit" class="edit btn btn-success pull-left">SAVE</button>
+                                                    <button class="edit btn btn-default pull-left" ng-click="reset()">Cancel</button>    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    <div class="callout callout-info edit">
+                                        <p ng-repeat="log in task.task_list.slice().reverse()" ng-bind-html="log.note">
+<!--                                            {{log.note}}-->
+                                            <br/>
+                                            <small ng-if="log.note != ''"><i>- from {{log.user_name}} on {{log.date | date:"MMM dd yyyy hh:mm a"}}</i></small>
+                                        </p>
+                                    </div>    
+                            </form>
+                        </li>
+                    </ul>
+                </section>
+
+                <footer class="task-footer">
+                    <ul class="list-inline clearfix">
+                        <li class="first-item">
+                            <input type="checkbox"
+                                   id="toggle-all"
+                                   data-ng-model="allChecked"
+                                   data-ng-change="markAll(allChecked)">
+                            <label for="toggle-all">Mark all as done</label>
+                        </li>
+                        <li class="text-center">
+                            <span>
+                                <strong>{{remainingCount}}</strong>
+                                <span class="text-muted"
+                                      data-ng-pluralize count="remainingCount"
+                                      when="{one: 'item left', other: 'items left'}"></span>
+                            </span>                            
+                        </li>
+                        <li class="text-right">
+                            <span class="clear-completed"
+                                  data-ng-click="clearCompleted()"
+                                  data-ng-show="remainingCount < tasks.length">Clear completed ({{tasks.length - remainingCount}})</span>                            
+                        </li>
+                    </ul>
+                </footer>
+                <div class="row">
+                    <div class="col-sm-4 hidden-xs">
+<!--                        Show <label><select  ng-model="Config.list.itemperPage" class="form-control input-sm"  ng-change="updateTableData()">
+                                <option value="20">20</option>
+                                <option value="40">40</option>
+                                <option value="60">60</option>
+                                <option value="80">80</option>
+                                <option value="100">100</option>
+                            </select></label>-->
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <small class="text-muted inline m-t-sm m-b-sm">showing {{Config.list.itemFrom}}-{{Config.list.itemTo}} of {{Config.list.itemTotalCount}} item(s) </small>
+                    </div>
+                    <div class="col-sm-4 text-right text-center-xs">                
+                        <ul class="pagination pagination-sm m-t-none m-b-none">
+                            <li><a href="javascript:void(0)" ng-click="getNextData(Config.list.preOffset)" ng-show="Config.list.currentPage > 1"><i class="fa fa-chevron-left"></i></a></li>
+                            <li><a href="javascript:void(0)" ng-repeat="page in Config.list.pagination| limitTo: 5" ng-click="getNextData(page.offset)">{{page.number}}</a></li>
+                            <li><a href="javascript:void(0)" ng-click="getNextData(Config.list.nextOffset)" ng-show="Config.list.currentPage < Config.list.paginationCount"><i class="fa fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <script type="text/ng-template" id="confirmbox.html">
+            <div class="modal-body">
+                <label class="text text-danger">{{alert_msg}}</label>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" ng-click="ok()">Yes</button>
+                <button class="btn btn-sm btn-default" ng-click="cancel()">No</button>
+            </div>
+        </script>
+    </div>
+</div>

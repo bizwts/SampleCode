@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/banking_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_bankinginfo_submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_hover"
+        android:text="Submit"
+        android:textColor="@color/white" />
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/linear_layout_title"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/et_bankinginfo_acountno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="5dip"
+                android:drawableLeft="@drawable/ic_about"
+                android:drawablePadding="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Account No"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_bankinginfo_acountname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_contact"
+                android:drawablePadding="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Account Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_bankinginfo_acounttype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:gravity="start|center_vertical"
+                android:hint="Account Type"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="5dip"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" />
+
+            <EditText
+                android:id="@+id/et_bankinginfo_branchname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_contact"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:gravity="start|center_vertical"
+                android:hint="Branch Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="5dip"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

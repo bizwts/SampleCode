@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/personal_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btn_user_next"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_hover"
+        android:text="Next"
+        android:textColor="@color/white" />
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/linear_layout_title"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/et_userfirstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="5dip"
+                android:drawableLeft="@drawable/ic_username"
+                android:drawablePadding="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="First Name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_userlastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_username"
+                android:drawablePadding="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Last Name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_useremail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Email Address"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_useraddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:gravity="start|center_vertical"
+                android:hint="Address"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress"
+                android:padding="5dip"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" />
+
+            <EditText
+                android:id="@+id/et_userphoneno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_contact"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:gravity="start|center_vertical"
+                android:hint="Phone No."
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:padding="5dip"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" />
+
+            <EditText
+                android:id="@+id/et_userpincode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:drawableLeft="@drawable/ic_about"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:gravity="start|center_vertical"
+                android:hint="Pincode"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="5dip"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

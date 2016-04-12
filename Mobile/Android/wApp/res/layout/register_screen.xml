@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_lightwhite"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/linear_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/splash_background_blue"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/registerback"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="top|left|center_vertical"
+            android:background="@drawable/actionbar_back_hover"
+            android:gravity="top|left|center_vertical"
+            android:padding="5dp"
+            android:src="@drawable/whiteback" />
+
+        <TextView
+            android:id="@+id/tv_registertext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center"
+            android:text="@string/register_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/register_textsize" />
+    </FrameLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/linear_layout_title"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dip"
+                android:layout_marginTop="16dip"
+                android:drawableLeft="@drawable/ic_username"
+                android:drawablePadding="5dp"
+                android:gravity="left"
+                android:hint="User Name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:padding="10dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_emailaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dip"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:gravity="left"
+                android:hint="Email Address"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:padding="10dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dip"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="5dp"
+                android:gravity="left"
+                android:hint="Password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="10dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" />
+
+            <EditText
+                android:id="@+id/et_bday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dip"
+                android:drawableLeft="@drawable/ic_calander"
+                android:drawablePadding="5dp"
+                android:gravity="left"
+                android:hint="Date of birth"
+                android:imeOptions="actionDone"
+                android:padding="10dip"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/splash_background_blue"
+                android:textColorHint="@color/textGreyColor" >
+            </EditText>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_hobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/tv_hobby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+                    android:text="Hobbies"
+                    android:textColor="@color/splash_background_blue"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="dip"
+                    android:weightSum="2" >
+
+                    <CheckBox
+                        android:id="@+id/tv_hobbychk1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cricket"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp" />
+
+                    <CheckBox
+                        android:id="@+id/tv_hobbychk2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="Football"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+                    android:text="Gender"
+                    android:textColor="@color/splash_background_blue"
+                    android:textSize="18dp" />
+
+                <RadioGroup
+                    android:id="@+id/radioSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="dip"
+                    android:weightSum="2" >
+
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:padding="2dp"
+                        android:text="Male"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp" />
+
+                    <RadioButton
+                        android:id="@+id/radioFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:text="Female"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonregister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login_hover"
+                android:text="Register"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

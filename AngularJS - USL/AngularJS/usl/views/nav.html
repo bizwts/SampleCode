@@ -1,0 +1,36 @@
+<div id="nav-wrapper">
+    <ul id="nav"
+        data-ng-controller="NavCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+        <li><a ng-click="check_notify('/dashboard/')" name="#/dashboard" class="link"> <i class="fa fa-dashboard"></i><span data-i18n="Dashboard"></span> </a></li>
+        
+        <li ng-show="(organization_user_access | filter:{value:user_info.designation}).length > 0 || (state_user_access | filter:{value:user_info.designation}).length > 0 || (commission_user_access | filter:{value:user_info.designation}).length > 0">
+            <a href="#/forms/wizard"> <i class="glyphicon glyphicon-wrench"></i><span data-i18n="Configuration"></span> </a>
+            <ul>
+                <li ng-show="(organization_user_access | filter:{value:user_info.designation}).length > 0"><a ng-click="check_notify('/usl/organizations/')" name="#/usl/organizations" class="link"><i class="fa fa-caret-right"></i><span data-i18n="Organization"></span></a></li>
+                <li ng-show="(state_user_access | filter:{value:user_info.designation}).length > 0"><a ng-click="check_notify('/usl/state_master/')" name="#/usl/state_master" class="link"><i class="fa fa-caret-right"></i><span data-i18n="State"></span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- Modal -->
+<section class="panel panel-default" ng-show="notify">
+    <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Modal</div>
+    <div class="panel-body" data-ng-controller="NavCtrl">
+        <script type="text/ng-template" id="myNotification.html">
+            <div class="modal-body">
+                <h4>It seems you have <span class="text text-danger">NOT</span> saved your data yet!</h4>
+                <br/>
+                Do you really want to proceed without saving?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="ok()">Yes, its fine</button>
+                <button class="btn btn-default" ng-click="cancel()">No</button>
+            </div>
+        </script>
+    </div>
+</section>
+<!-- end Modal -->

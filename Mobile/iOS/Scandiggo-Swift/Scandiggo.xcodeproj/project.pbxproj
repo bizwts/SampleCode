@@ -1,0 +1,712 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE30CC341C5A5A85009A7DAD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30CC331C5A5A85009A7DAD /* ForgotPasswordViewController.swift */; };
+		EE30CC361C5A6128009A7DAD /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30CC351C5A6128009A7DAD /* MyCardViewController.swift */; };
+		EE30CC411C5A645F009A7DAD /* PasswordHide.png in Resources */ = {isa = PBXBuildFile; fileRef = EE30CC3F1C5A645F009A7DAD /* PasswordHide.png */; };
+		EE30CC421C5A645F009A7DAD /* PasswordShow.png in Resources */ = {isa = PBXBuildFile; fileRef = EE30CC401C5A645F009A7DAD /* PasswordShow.png */; };
+		EE64119E1C5B41AB00DBBBBE /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6411961C5B41AB00DBBBBE /* MMDrawerBarButtonItem.m */; };
+		EE64119F1C5B41AB00DBBBBE /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6411991C5B41AB00DBBBBE /* MMDrawerController.m */; };
+		EE6411A01C5B41AB00DBBBBE /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = EE64119B1C5B41AB00DBBBBE /* MMDrawerVisualState.m */; };
+		EE6411A11C5B41AB00DBBBBE /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE64119D1C5B41AB00DBBBBE /* UIViewController+MMDrawerController.m */; };
+		EE6411A51C5B420C00DBBBBE /* LeftSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6411A41C5B420C00DBBBBE /* LeftSideMenuViewController.swift */; };
+		EE6411AD1C5B506C00DBBBBE /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6411AC1C5B506C00DBBBBE /* Menu.png */; };
+		EE6411D21C5B75E500DBBBBE /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6411D11C5B75E500DBBBBE /* SideMenuCell.swift */; };
+		EE6411DD1C5B7C5B00DBBBBE /* Terms.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6411DC1C5B7C5B00DBBBBE /* Terms.png */; };
+		EE6411DF1C5B7C6500DBBBBE /* Share.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6411DE1C5B7C6500DBBBBE /* Share.png */; };
+		EE6411E11C5B7C6B00DBBBBE /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6411E01C5B7C6B00DBBBBE /* Logout.png */; };
+		EE6411E31C5B7C7100DBBBBE /* PrivacyPolicy.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6411E21C5B7C7100DBBBBE /* PrivacyPolicy.png */; };
+		EE6411E51C5B7D6C00DBBBBE /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6411E41C5B7D6C00DBBBBE /* Home.png */; };
+		EE75DFE21C59DC95004106F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75DFE11C59DC95004106F9 /* AppDelegate.swift */; };
+		EE75DFE41C59DC95004106F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75DFE31C59DC95004106F9 /* ViewController.swift */; };
+		EE75DFE71C59DC95004106F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE75DFE51C59DC95004106F9 /* Main.storyboard */; };
+		EE75DFE91C59DC95004106F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE75DFE81C59DC95004106F9 /* Assets.xcassets */; };
+		EE75DFEC1C59DC95004106F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE75DFEA1C59DC95004106F9 /* LaunchScreen.storyboard */; };
+		EE75E1E11C5A03A0004106F9 /* DMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1E01C5A03A0004106F9 /* DMTextField.swift */; };
+		EE75E1E71C5A0921004106F9 /* PasswordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EE75E1E41C5A0921004106F9 /* PasswordIcon.png */; };
+		EE75E1EA1C5A2705004106F9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1E91C5A2705004106F9 /* SecondViewController.swift */; };
+		EE75E1EC1C5A2C86004106F9 /* Mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = EE75E1EB1C5A2C86004106F9 /* Mobile.png */; };
+		EE75E1EE1C5A2C8F004106F9 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = EE75E1ED1C5A2C8F004106F9 /* User.png */; };
+		EE75E1F01C5A2CB3004106F9 /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = EE75E1EF1C5A2CB3004106F9 /* Email.png */; };
+		EE75E1F31C5A4501004106F9 /* KeyboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1F21C5A4501004106F9 /* KeyboardUtility.swift */; };
+		EE75E20B1C5A48EE004106F9 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1F61C5A48EE004106F9 /* IQNSArray+Sort.swift */; };
+		EE75E20C1C5A48EE004106F9 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1F71C5A48EE004106F9 /* IQUIScrollView+Additions.swift */; };
+		EE75E20D1C5A48EE004106F9 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1F81C5A48EE004106F9 /* IQUITextFieldView+Additions.swift */; };
+		EE75E20E1C5A48EE004106F9 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1F91C5A48EE004106F9 /* IQUIView+Hierarchy.swift */; };
+		EE75E20F1C5A48EE004106F9 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1FA1C5A48EE004106F9 /* IQUIViewController+Additions.swift */; };
+		EE75E2101C5A48EE004106F9 /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1FB1C5A48EE004106F9 /* IQUIWindow+Hierarchy.swift */; };
+		EE75E2111C5A48EE004106F9 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1FD1C5A48EE004106F9 /* IQKeyboardManagerConstants.swift */; };
+		EE75E2121C5A48EE004106F9 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1FE1C5A48EE004106F9 /* IQKeyboardManagerConstantsInternal.swift */; };
+		EE75E2131C5A48EE004106F9 /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E1FF1C5A48EE004106F9 /* IQKeyboardManager.swift */; };
+		EE75E2141C5A48EE004106F9 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2001C5A48EE004106F9 /* IQKeyboardReturnKeyHandler.swift */; };
+		EE75E2151C5A48EE004106F9 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2021C5A48EE004106F9 /* IQTextView.swift */; };
+		EE75E2161C5A48EE004106F9 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2041C5A48EE004106F9 /* IQBarButtonItem.swift */; };
+		EE75E2171C5A48EE004106F9 /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2051C5A48EE004106F9 /* IQTitleBarButtonItem.swift */; };
+		EE75E2181C5A48EE004106F9 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2061C5A48EE004106F9 /* IQToolbar.swift */; };
+		EE75E2191C5A48EE004106F9 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2071C5A48EE004106F9 /* IQUIView+IQKeyboardToolbar.swift */; };
+		EE75E21B1C5A48EE004106F9 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE75E20A1C5A48EE004106F9 /* IQKeyboardManager.bundle */; };
+		EE75E21D1C5A4B4D004106F9 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E21C1C5A4B4D004106F9 /* Themes.swift */; };
+		EE75E21F1C5A5055004106F9 /* Unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = EE75E21E1C5A5055004106F9 /* Unchecked.png */; };
+		EE75E2211C5A5089004106F9 /* Check.png in Resources */ = {isa = PBXBuildFile; fileRef = EE75E2201C5A5089004106F9 /* Check.png */; };
+		EE75E2231C5A5609004106F9 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75E2221C5A5609004106F9 /* PrivacyPolicyViewController.swift */; };
+		EE82C1F31C5CB1F3009E0515 /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = EE82C1EE1C5CB1F3009E0515 /* RMStep.m */; };
+		EE82C1F41C5CB1F3009E0515 /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EE82C1F01C5CB1F3009E0515 /* RMStepsBar.m */; };
+		EE82C1F51C5CB1F3009E0515 /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE82C1F21C5CB1F3009E0515 /* RMStepsController.m */; };
+		EE82C1FF1C5CB5EB009E0515 /* RMNavStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE82C1FE1C5CB5EB009E0515 /* RMNavStepsViewController.swift */; };
+		EE82C2011C5CB67F009E0515 /* RMModalStepsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE82C2001C5CB67F009E0515 /* RMModalStepsController.swift */; };
+		EEDF3B7D1C5B89DC00E13DB9 /* Setting.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDF3B7C1C5B89DB00E13DB9 /* Setting.png */; };
+		EEDF3B7F1C5B8C8400E13DB9 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDF3B7E1C5B8C8400E13DB9 /* Add.png */; };
+		EEDF3B811C5B8EA800E13DB9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDF3B801C5B8EA800E13DB9 /* AddCardViewController.swift */; };
+		EEDF3BA31C5B9D8F00E13DB9 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDF3BA11C5B9D8F00E13DB9 /* PageControl.swift */; };
+		EEDF3BA51C5BAB9E00E13DB9 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDF3BA41C5BAB9E00E13DB9 /* TermsViewController.swift */; };
+		EEDF3BA71C5BABEA00E13DB9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDF3BA61C5BABEA00E13DB9 /* ShareViewController.swift */; };
+		EEDF3BA91C5BABF800E13DB9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDF3BA81C5BABF800E13DB9 /* SettingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE30CC331C5A5A85009A7DAD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		EE30CC351C5A6128009A7DAD /* MyCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
+		EE30CC3F1C5A645F009A7DAD /* PasswordHide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PasswordHide.png; sourceTree = "<group>"; };
+		EE30CC401C5A645F009A7DAD /* PasswordShow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PasswordShow.png; sourceTree = "<group>"; };
+		EE6411951C5B41AB00DBBBBE /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		EE6411961C5B41AB00DBBBBE /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		EE6411971C5B41AB00DBBBBE /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		EE6411981C5B41AB00DBBBBE /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		EE6411991C5B41AB00DBBBBE /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		EE64119A1C5B41AB00DBBBBE /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		EE64119B1C5B41AB00DBBBBE /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		EE64119C1C5B41AB00DBBBBE /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		EE64119D1C5B41AB00DBBBBE /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		EE6411A41C5B420C00DBBBBE /* LeftSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftSideMenuViewController.swift; sourceTree = "<group>"; };
+		EE6411A61C5B443700DBBBBE /* Scandiggo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scandiggo-Bridging-Header.h"; sourceTree = "<group>"; };
+		EE6411AC1C5B506C00DBBBBE /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
+		EE6411D11C5B75E500DBBBBE /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuCell.swift; path = TableCell/SideMenuCell.swift; sourceTree = "<group>"; };
+		EE6411DC1C5B7C5B00DBBBBE /* Terms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Terms.png; sourceTree = "<group>"; };
+		EE6411DE1C5B7C6500DBBBBE /* Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Share.png; sourceTree = "<group>"; };
+		EE6411E01C5B7C6B00DBBBBE /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
+		EE6411E21C5B7C7100DBBBBE /* PrivacyPolicy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrivacyPolicy.png; sourceTree = "<group>"; };
+		EE6411E41C5B7D6C00DBBBBE /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		EE75DFDE1C59DC95004106F9 /* Scandiggo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scandiggo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE75DFE11C59DC95004106F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE75DFE31C59DC95004106F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EE75DFE61C59DC95004106F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE75DFE81C59DC95004106F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE75DFEB1C59DC95004106F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE75DFED1C59DC95004106F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE75E1E01C5A03A0004106F9 /* DMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMTextField.swift; sourceTree = "<group>"; };
+		EE75E1E41C5A0921004106F9 /* PasswordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PasswordIcon.png; sourceTree = "<group>"; };
+		EE75E1E91C5A2705004106F9 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		EE75E1EB1C5A2C86004106F9 /* Mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile.png; sourceTree = "<group>"; };
+		EE75E1ED1C5A2C8F004106F9 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
+		EE75E1EF1C5A2CB3004106F9 /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
+		EE75E1F21C5A4501004106F9 /* KeyboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardUtility.swift; sourceTree = "<group>"; };
+		EE75E1F61C5A48EE004106F9 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
+		EE75E1F71C5A48EE004106F9 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
+		EE75E1F81C5A48EE004106F9 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		EE75E1F91C5A48EE004106F9 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		EE75E1FA1C5A48EE004106F9 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
+		EE75E1FB1C5A48EE004106F9 /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
+		EE75E1FD1C5A48EE004106F9 /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
+		EE75E1FE1C5A48EE004106F9 /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		EE75E1FF1C5A48EE004106F9 /* IQKeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManager.swift; sourceTree = "<group>"; };
+		EE75E2001C5A48EE004106F9 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
+		EE75E2021C5A48EE004106F9 /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
+		EE75E2041C5A48EE004106F9 /* IQBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQBarButtonItem.swift; sourceTree = "<group>"; };
+		EE75E2051C5A48EE004106F9 /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
+		EE75E2061C5A48EE004106F9 /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
+		EE75E2071C5A48EE004106F9 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
+		EE75E20A1C5A48EE004106F9 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		EE75E21C1C5A4B4D004106F9 /* Themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		EE75E21E1C5A5055004106F9 /* Unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unchecked.png; sourceTree = "<group>"; };
+		EE75E2201C5A5089004106F9 /* Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Check.png; sourceTree = "<group>"; };
+		EE75E2221C5A5609004106F9 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		EE82C1ED1C5CB1F3009E0515 /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
+		EE82C1EE1C5CB1F3009E0515 /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
+		EE82C1EF1C5CB1F3009E0515 /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
+		EE82C1F01C5CB1F3009E0515 /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
+		EE82C1F11C5CB1F3009E0515 /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
+		EE82C1F21C5CB1F3009E0515 /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
+		EE82C1FE1C5CB5EB009E0515 /* RMNavStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMNavStepsViewController.swift; sourceTree = "<group>"; };
+		EE82C2001C5CB67F009E0515 /* RMModalStepsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMModalStepsController.swift; sourceTree = "<group>"; };
+		EEDF3B7C1C5B89DB00E13DB9 /* Setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Setting.png; sourceTree = "<group>"; };
+		EEDF3B7E1C5B8C8400E13DB9 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add.png; sourceTree = "<group>"; };
+		EEDF3B801C5B8EA800E13DB9 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		EEDF3B9F1C5B9D8F00E13DB9 /* GBPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBPageControl.h; sourceTree = "<group>"; };
+		EEDF3BA11C5B9D8F00E13DB9 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		EEDF3BA41C5BAB9E00E13DB9 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		EEDF3BA61C5BABEA00E13DB9 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		EEDF3BA81C5BABF800E13DB9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE75DFDB1C59DC95004106F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE6411931C5B419F00DBBBBE /* Objective c */ = {
+			isa = PBXGroup;
+			children = (
+				EE82C1EC1C5CB1F3009E0515 /* RMStepsController */,
+				EE6411941C5B41AB00DBBBBE /* MMDrawerController */,
+			);
+			path = "Objective c";
+			sourceTree = "<group>";
+		};
+		EE6411941C5B41AB00DBBBBE /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				EE6411951C5B41AB00DBBBBE /* MMDrawerBarButtonItem.h */,
+				EE6411961C5B41AB00DBBBBE /* MMDrawerBarButtonItem.m */,
+				EE6411971C5B41AB00DBBBBE /* MMDrawerController+Subclass.h */,
+				EE6411981C5B41AB00DBBBBE /* MMDrawerController.h */,
+				EE6411991C5B41AB00DBBBBE /* MMDrawerController.m */,
+				EE64119A1C5B41AB00DBBBBE /* MMDrawerVisualState.h */,
+				EE64119B1C5B41AB00DBBBBE /* MMDrawerVisualState.m */,
+				EE64119C1C5B41AB00DBBBBE /* UIViewController+MMDrawerController.h */,
+				EE64119D1C5B41AB00DBBBBE /* UIViewController+MMDrawerController.m */,
+			);
+			path = MMDrawerController;
+			sourceTree = "<group>";
+		};
+		EE6411B01C5B564F00DBBBBE /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE6411D11C5B75E500DBBBBE /* SideMenuCell.swift */,
+			);
+			name = TableCell;
+			sourceTree = "<group>";
+		};
+		EE6411D31C5B78A600DBBBBE /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				EEDF3B7C1C5B89DB00E13DB9 /* Setting.png */,
+				EE6411E41C5B7D6C00DBBBBE /* Home.png */,
+				EE6411E21C5B7C7100DBBBBE /* PrivacyPolicy.png */,
+				EE6411E01C5B7C6B00DBBBBE /* Logout.png */,
+				EE6411DE1C5B7C6500DBBBBE /* Share.png */,
+				EE6411DC1C5B7C5B00DBBBBE /* Terms.png */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		EE75DFD51C59DC95004106F9 = {
+			isa = PBXGroup;
+			children = (
+				EE75DFE01C59DC95004106F9 /* Scandiggo */,
+				EE75DFDF1C59DC95004106F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE75DFDF1C59DC95004106F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE75DFDE1C59DC95004106F9 /* Scandiggo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE75DFE01C59DC95004106F9 /* Scandiggo */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1F11C5A449E004106F9 /* External */,
+				EE75E1E81C5A26E9004106F9 /* Controller */,
+				EE75E1DE1C5A0387004106F9 /* API */,
+				EE75E1DC1C5A037B004106F9 /* CustomView */,
+				EE75E1DA1C5A036E004106F9 /* Global */,
+				EE75E1D81C5A0364004106F9 /* Assets */,
+				EE75E1D61C5A0358004106F9 /* Frameworks */,
+				EE75DFE11C59DC95004106F9 /* AppDelegate.swift */,
+				EE75DFE31C59DC95004106F9 /* ViewController.swift */,
+				EE75DFE51C59DC95004106F9 /* Main.storyboard */,
+				EE75DFE81C59DC95004106F9 /* Assets.xcassets */,
+				EE75DFEA1C59DC95004106F9 /* LaunchScreen.storyboard */,
+				EE75DFED1C59DC95004106F9 /* Info.plist */,
+				EE6411A61C5B443700DBBBBE /* Scandiggo-Bridging-Header.h */,
+			);
+			path = Scandiggo;
+			sourceTree = "<group>";
+		};
+		EE75E1D61C5A0358004106F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1D71C5A0358004106F9 /* Images */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE75E1D71C5A0358004106F9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		EE75E1D81C5A0364004106F9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1D91C5A0364004106F9 /* Images */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EE75E1D91C5A0364004106F9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EEDF3B7E1C5B8C8400E13DB9 /* Add.png */,
+				EE6411D31C5B78A600DBBBBE /* SideMenu */,
+				EE6411AC1C5B506C00DBBBBE /* Menu.png */,
+				EE30CC3F1C5A645F009A7DAD /* PasswordHide.png */,
+				EE30CC401C5A645F009A7DAD /* PasswordShow.png */,
+				EE75E2201C5A5089004106F9 /* Check.png */,
+				EE75E21E1C5A5055004106F9 /* Unchecked.png */,
+				EE75E1EF1C5A2CB3004106F9 /* Email.png */,
+				EE75E1ED1C5A2C8F004106F9 /* User.png */,
+				EE75E1EB1C5A2C86004106F9 /* Mobile.png */,
+				EE75E1E41C5A0921004106F9 /* PasswordIcon.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		EE75E1DA1C5A036E004106F9 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E21C1C5A4B4D004106F9 /* Themes.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		EE75E1DC1C5A037B004106F9 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				EE6411B01C5B564F00DBBBBE /* TableCell */,
+				EE75E1E01C5A03A0004106F9 /* DMTextField.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		EE75E1DE1C5A0387004106F9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1DF1C5A0387004106F9 /* Images */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EE75E1DF1C5A0387004106F9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		EE75E1E81C5A26E9004106F9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1E91C5A2705004106F9 /* SecondViewController.swift */,
+				EE75E2221C5A5609004106F9 /* PrivacyPolicyViewController.swift */,
+				EE30CC331C5A5A85009A7DAD /* ForgotPasswordViewController.swift */,
+				EE30CC351C5A6128009A7DAD /* MyCardViewController.swift */,
+				EE6411A41C5B420C00DBBBBE /* LeftSideMenuViewController.swift */,
+				EEDF3B801C5B8EA800E13DB9 /* AddCardViewController.swift */,
+				EEDF3BA41C5BAB9E00E13DB9 /* TermsViewController.swift */,
+				EEDF3BA61C5BABEA00E13DB9 /* ShareViewController.swift */,
+				EEDF3BA81C5BABF800E13DB9 /* SettingViewController.swift */,
+				EE82C1FE1C5CB5EB009E0515 /* RMNavStepsViewController.swift */,
+				EE82C2001C5CB67F009E0515 /* RMModalStepsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EE75E1F11C5A449E004106F9 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				EEDF3B9E1C5B9D8F00E13DB9 /* GBPageControl */,
+				EE6411931C5B419F00DBBBBE /* Objective c */,
+				EE75E1F41C5A48EE004106F9 /* IQKeyboardManagerSwift */,
+				EE75E1F21C5A4501004106F9 /* KeyboardUtility.swift */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		EE75E1F41C5A48EE004106F9 /* IQKeyboardManagerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1F51C5A48EE004106F9 /* Categories */,
+				EE75E1FC1C5A48EE004106F9 /* Constants */,
+				EE75E1FF1C5A48EE004106F9 /* IQKeyboardManager.swift */,
+				EE75E2001C5A48EE004106F9 /* IQKeyboardReturnKeyHandler.swift */,
+				EE75E2011C5A48EE004106F9 /* IQTextView */,
+				EE75E2031C5A48EE004106F9 /* IQToolbar */,
+				EE75E2081C5A48EE004106F9 /* Resources */,
+			);
+			path = IQKeyboardManagerSwift;
+			sourceTree = "<group>";
+		};
+		EE75E1F51C5A48EE004106F9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1F61C5A48EE004106F9 /* IQNSArray+Sort.swift */,
+				EE75E1F71C5A48EE004106F9 /* IQUIScrollView+Additions.swift */,
+				EE75E1F81C5A48EE004106F9 /* IQUITextFieldView+Additions.swift */,
+				EE75E1F91C5A48EE004106F9 /* IQUIView+Hierarchy.swift */,
+				EE75E1FA1C5A48EE004106F9 /* IQUIViewController+Additions.swift */,
+				EE75E1FB1C5A48EE004106F9 /* IQUIWindow+Hierarchy.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		EE75E1FC1C5A48EE004106F9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E1FD1C5A48EE004106F9 /* IQKeyboardManagerConstants.swift */,
+				EE75E1FE1C5A48EE004106F9 /* IQKeyboardManagerConstantsInternal.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		EE75E2011C5A48EE004106F9 /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E2021C5A48EE004106F9 /* IQTextView.swift */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		EE75E2031C5A48EE004106F9 /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E2041C5A48EE004106F9 /* IQBarButtonItem.swift */,
+				EE75E2051C5A48EE004106F9 /* IQTitleBarButtonItem.swift */,
+				EE75E2061C5A48EE004106F9 /* IQToolbar.swift */,
+				EE75E2071C5A48EE004106F9 /* IQUIView+IQKeyboardToolbar.swift */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		EE75E2081C5A48EE004106F9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EE75E20A1C5A48EE004106F9 /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EE82C1EC1C5CB1F3009E0515 /* RMStepsController */ = {
+			isa = PBXGroup;
+			children = (
+				EE82C1ED1C5CB1F3009E0515 /* RMStep.h */,
+				EE82C1EE1C5CB1F3009E0515 /* RMStep.m */,
+				EE82C1EF1C5CB1F3009E0515 /* RMStepsBar.h */,
+				EE82C1F01C5CB1F3009E0515 /* RMStepsBar.m */,
+				EE82C1F11C5CB1F3009E0515 /* RMStepsController.h */,
+				EE82C1F21C5CB1F3009E0515 /* RMStepsController.m */,
+			);
+			path = RMStepsController;
+			sourceTree = "<group>";
+		};
+		EEDF3B9E1C5B9D8F00E13DB9 /* GBPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				EEDF3B9F1C5B9D8F00E13DB9 /* GBPageControl.h */,
+				EEDF3BA11C5B9D8F00E13DB9 /* PageControl.swift */,
+			);
+			path = GBPageControl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE75DFDD1C59DC95004106F9 /* Scandiggo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE75DFF01C59DC95004106F9 /* Build configuration list for PBXNativeTarget "Scandiggo" */;
+			buildPhases = (
+				EE75DFDA1C59DC95004106F9 /* Sources */,
+				EE75DFDB1C59DC95004106F9 /* Frameworks */,
+				EE75DFDC1C59DC95004106F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scandiggo;
+			productName = Scandiggo;
+			productReference = EE75DFDE1C59DC95004106F9 /* Scandiggo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE75DFD61C59DC95004106F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = wings;
+				TargetAttributes = {
+					EE75DFDD1C59DC95004106F9 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = EE75DFD91C59DC95004106F9 /* Build configuration list for PBXProject "Scandiggo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE75DFD51C59DC95004106F9;
+			productRefGroup = EE75DFDF1C59DC95004106F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE75DFDD1C59DC95004106F9 /* Scandiggo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE75DFDC1C59DC95004106F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE75DFEC1C59DC95004106F9 /* LaunchScreen.storyboard in Resources */,
+				EE75DFE91C59DC95004106F9 /* Assets.xcassets in Resources */,
+				EE75E1EE1C5A2C8F004106F9 /* User.png in Resources */,
+				EE30CC421C5A645F009A7DAD /* PasswordShow.png in Resources */,
+				EE75E1EC1C5A2C86004106F9 /* Mobile.png in Resources */,
+				EE75E1F01C5A2CB3004106F9 /* Email.png in Resources */,
+				EEDF3B7F1C5B8C8400E13DB9 /* Add.png in Resources */,
+				EE6411AD1C5B506C00DBBBBE /* Menu.png in Resources */,
+				EE6411DD1C5B7C5B00DBBBBE /* Terms.png in Resources */,
+				EE6411E11C5B7C6B00DBBBBE /* Logout.png in Resources */,
+				EE6411DF1C5B7C6500DBBBBE /* Share.png in Resources */,
+				EE30CC411C5A645F009A7DAD /* PasswordHide.png in Resources */,
+				EE75DFE71C59DC95004106F9 /* Main.storyboard in Resources */,
+				EE6411E51C5B7D6C00DBBBBE /* Home.png in Resources */,
+				EE75E1E71C5A0921004106F9 /* PasswordIcon.png in Resources */,
+				EEDF3B7D1C5B89DC00E13DB9 /* Setting.png in Resources */,
+				EE75E21F1C5A5055004106F9 /* Unchecked.png in Resources */,
+				EE75E21B1C5A48EE004106F9 /* IQKeyboardManager.bundle in Resources */,
+				EE75E2211C5A5089004106F9 /* Check.png in Resources */,
+				EE6411E31C5B7C7100DBBBBE /* PrivacyPolicy.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE75DFDA1C59DC95004106F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE75E1EA1C5A2705004106F9 /* SecondViewController.swift in Sources */,
+				EE30CC341C5A5A85009A7DAD /* ForgotPasswordViewController.swift in Sources */,
+				EE82C1F51C5CB1F3009E0515 /* RMStepsController.m in Sources */,
+				EE6411A51C5B420C00DBBBBE /* LeftSideMenuViewController.swift in Sources */,
+				EE75E2231C5A5609004106F9 /* PrivacyPolicyViewController.swift in Sources */,
+				EE75E1E11C5A03A0004106F9 /* DMTextField.swift in Sources */,
+				EEDF3BA91C5BABF800E13DB9 /* SettingViewController.swift in Sources */,
+				EE30CC361C5A6128009A7DAD /* MyCardViewController.swift in Sources */,
+				EE75E2181C5A48EE004106F9 /* IQToolbar.swift in Sources */,
+				EE82C1F41C5CB1F3009E0515 /* RMStepsBar.m in Sources */,
+				EE75E20F1C5A48EE004106F9 /* IQUIViewController+Additions.swift in Sources */,
+				EE75E2161C5A48EE004106F9 /* IQBarButtonItem.swift in Sources */,
+				EE75E20B1C5A48EE004106F9 /* IQNSArray+Sort.swift in Sources */,
+				EEDF3BA31C5B9D8F00E13DB9 /* PageControl.swift in Sources */,
+				EE75E2111C5A48EE004106F9 /* IQKeyboardManagerConstants.swift in Sources */,
+				EE6411D21C5B75E500DBBBBE /* SideMenuCell.swift in Sources */,
+				EE75E21D1C5A4B4D004106F9 /* Themes.swift in Sources */,
+				EE75E2151C5A48EE004106F9 /* IQTextView.swift in Sources */,
+				EE75DFE41C59DC95004106F9 /* ViewController.swift in Sources */,
+				EEDF3BA71C5BABEA00E13DB9 /* ShareViewController.swift in Sources */,
+				EE82C1F31C5CB1F3009E0515 /* RMStep.m in Sources */,
+				EE75E2131C5A48EE004106F9 /* IQKeyboardManager.swift in Sources */,
+				EE82C2011C5CB67F009E0515 /* RMModalStepsController.swift in Sources */,
+				EE75E2171C5A48EE004106F9 /* IQTitleBarButtonItem.swift in Sources */,
+				EE75E2101C5A48EE004106F9 /* IQUIWindow+Hierarchy.swift in Sources */,
+				EE75E20E1C5A48EE004106F9 /* IQUIView+Hierarchy.swift in Sources */,
+				EE75DFE21C59DC95004106F9 /* AppDelegate.swift in Sources */,
+				EE64119F1C5B41AB00DBBBBE /* MMDrawerController.m in Sources */,
+				EEDF3BA51C5BAB9E00E13DB9 /* TermsViewController.swift in Sources */,
+				EE75E20C1C5A48EE004106F9 /* IQUIScrollView+Additions.swift in Sources */,
+				EEDF3B811C5B8EA800E13DB9 /* AddCardViewController.swift in Sources */,
+				EE75E2141C5A48EE004106F9 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				EE6411A01C5B41AB00DBBBBE /* MMDrawerVisualState.m in Sources */,
+				EE75E20D1C5A48EE004106F9 /* IQUITextFieldView+Additions.swift in Sources */,
+				EE82C1FF1C5CB5EB009E0515 /* RMNavStepsViewController.swift in Sources */,
+				EE6411A11C5B41AB00DBBBBE /* UIViewController+MMDrawerController.m in Sources */,
+				EE75E2121C5A48EE004106F9 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				EE64119E1C5B41AB00DBBBBE /* MMDrawerBarButtonItem.m in Sources */,
+				EE75E2191C5A48EE004106F9 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				EE75E1F31C5A4501004106F9 /* KeyboardUtility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE75DFE51C59DC95004106F9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE75DFE61C59DC95004106F9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE75DFEA1C59DC95004106F9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE75DFEB1C59DC95004106F9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE75DFEE1C59DC95004106F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE75DFEF1C59DC95004106F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE75DFF11C59DC95004106F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Scandiggo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wings.dharmesh.Scandiggo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Scandiggo/Scandiggo-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		EE75DFF21C59DC95004106F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Scandiggo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wings.dharmesh.Scandiggo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Scandiggo/Scandiggo-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE75DFD91C59DC95004106F9 /* Build configuration list for PBXProject "Scandiggo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE75DFEE1C59DC95004106F9 /* Debug */,
+				EE75DFEF1C59DC95004106F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE75DFF01C59DC95004106F9 /* Build configuration list for PBXNativeTarget "Scandiggo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE75DFF11C59DC95004106F9 /* Debug */,
+				EE75DFF21C59DC95004106F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE75DFD61C59DC95004106F9 /* Project object */;
+}

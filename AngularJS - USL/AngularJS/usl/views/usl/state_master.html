@@ -1,0 +1,118 @@
+<div class="page page-table" data-ng-controller="list_states">
+
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> States</strong><p><small>Master list of states with their settings...</small></p></div>
+
+        <div class="table-filters">
+            <div class="row">
+                <form name="search_form" novalidate>
+                    <div class="col-sm-4 col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                            <input type="text" data-ng-model="Config.general.searchtxt"  class="form-control" placeholder="State" ng-class="form-control" 
+                               typeahead="state.STATECD as state.STATENAME for state in stateList | filter:$viewValue | limitTo:8" typeahead-template-url="views/usl/stateTemplate.html" >
+                        </div>     
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <button class="btn btn-sm btn-info" type="submit" ng-click="updateTableData(true)">Search</button>
+                        <button class="btn btn-sm btn-warning" type="button" ng-click="clearSearch()">Clear</button>
+                    </div>
+                </form>
+                <div class="col-sm-5 col-xs-4">
+                    <form>
+                        <a ng-show="(state_add_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/add_state" class="btn btn-info btn-sm pull-right"><span class="glyphicon glyphicon-plus"></span> Add State</a>
+                        <br/><br/><br/>
+                        <label class="pull-right text-muted"><em class="ng-binding">Total {{total_state}} States</em></label>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover table-responsive small-text">
+            <thead>
+                <tr>
+                    <th ng-click="sortMe('code', 'code')" class="sortable code">
+            <div class="th">
+                Code &nbsp;<i class="fa fa-sort"></i>
+            </div>
+            </th>
+            <th ng-click="sortMe('name', 'name')" class="sortable name">
+            <div class="th">
+                Name &nbsp;<i class="fa fa-sort"></i>
+            </div>
+            </th>
+            <th class="sortable Organization">
+            <div class="th">
+                USL Organization
+            </div>
+            </th>
+            <th class="sortable Plan">
+            <div class="th">
+                Plan Classes
+            </div>
+            </th>
+            <th><div class="th action">
+                Action <span popover="Update State" popover-trigger="mouseenter" class="glyphicon glyphicon-question-sign"></span>
+            </div></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="(i,state) in current_states" ng-animate="animate">
+                    <td><span ng-if="date == state.datecreated" class="color-warning"><i class="fa fa-lightbulb-o"></i></span> {{state.code}}</td>
+                    <td>{{state.state_name}}</td>
+                    <td>{{state.org_name}}</td>
+                    <td>{{state.planclasscode}}</td>
+                    <td>
+                        <a ng-show="(state_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/add_state/{{state.id}}" class="btn btn-default btn-sm glyphicon glyphicon-pencil"></a> <!--<p class="date"></p>--> 
+                        <a ng-show="(state_view_user_access | filter:{value:user_info.designation}).length > 0" popover-trigger="mouseenter" popover="View State" href="#/usl/add_state/{{state.id}}/view" class="btn btn-sm btn-default glyphicon glyphicon-list-alt ng-scope"></a>
+                        <button ng-show="(state_del_user_access | filter:{value:user_info.designation}).length > 0" ng-click="remove_record(state.id, i, current_states)" class="btn btn-default btn-sm glyphicon glyphicon-remove"></button>
+                        <small><i><span ng-if="state.datecreated != null">..{{state.datecreated| date:"MMM dd yyyy"}}</span></i></small>
+                    </td>
+                </tr>
+                <tr ng-show="current_states.length == 0 || !current_states.length">
+                    <td colspan="5" class="text-center"><h4>No Records Found</h4></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-sm-4 hidden-xs">
+                    Show <label><select  ng-model="Config.list.itemperPage" class="form-control input-sm"  ng-change="updateTableData()">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select></label>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <small class="text-muted inline m-t-sm m-b-sm">showing {{Config.list.itemFrom}}-{{Config.list.itemTo}} of {{Config.list.itemTotalCount}} item(s) </small>
+                </div>
+                <div class="col-sm-4 text-right text-center-xs">                
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href="javascript:void(0)" ng-click="getNextData(Config.list.preOffset)" ng-show="Config.list.currentPage > 1"><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href="javascript:void(0)" ng-repeat="page in Config.list.pagination| limitTo: 5" ng-click="getNextData(page.offset)">{{page.number}}</a></li>
+                        <li><a href="javascript:void(0)" ng-click="getNextData(Config.list.nextOffset)" ng-show="Config.list.currentPage < Config.list.paginationCount"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    </section>
+
+    <section class="panel panel-default" ng-show="del_conf">
+        <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Confirm</div>
+        <div class="panel-body">
+            <script type="text/ng-template" id="delConfirm.html">
+                <div class="modal-body">
+                <h4 class="text text-danger">Do you really want to delete this State?</h4>
+                </div>
+                <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="ok()">Yes, its fine</button>
+                <button class="btn btn-default" ng-click="cancel()">No</button>
+                </div>
+            </script>
+        </div>
+    </section>
+
+</div>

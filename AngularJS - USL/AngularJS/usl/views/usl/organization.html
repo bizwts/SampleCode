@@ -1,0 +1,192 @@
+<section class="page-form-ele page" data-ng-controller="organization">
+    <!-- Company -->
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Organization</strong></div>
+        <div class="panel-body">
+            <form name="form_constraints" class="form-validation" novalidate>
+                <fieldset ng-disabled="ctrl_disable">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Name <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                            <input  type="text" class="form-control" data-ng-trim='false' id="org_name" ng-blur="check_avail()" capitalize data-ng-model="org.name" required ng-class="[ngOrgName, ngInvalidRequired]" placeholder="Name" />                        
+                            <span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Code <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                            <input  type="text" class="form-control" data-ng-trim='false' capitalize data-ng-model="org.code" ng-blur="check_code()" required ng-class="[ngOrgCode, ngInvalidRequired]" placeholder="Code" />                        
+                            <span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label>NAIC Code</label>
+                            <input  type="text" class="form-control" data-ng-trim='false' capitalize data-ng-model="org.naic_code" placeholder="NAIC Code" />                        
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group" ng-repeat="(i,address) in addresses">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3" ng-if="i == 0">
+                                <label>Address Type</label>
+                                <input  type="text" class="form-control" ng-init="address.type = 'Primary'" value="Primary" capitalize data-ng-model="address.type" readonly="readonly">
+                                <span></span>
+                            </div>
+                            <div class="col-md-3" ng-if="i != 0">
+                                <label>Address Type</label>
+                                <input  type="text" class="form-control" capitalize data-ng-model="address.type" placeholder="Home, Work, etc">
+                                <span></span>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Address Line 1 <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                                <input  type="text" class="form-control" capitalize data-ng-model="address.address1" required ng-class="ngInvalidRequired" placeholder="Address Line 1">                 
+                                <span></span>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Address Line 2</label>
+                                <input  type="text" class="form-control" capitalize data-ng-model="address.address2" placeholder="Address Line 2">             
+                                <span></span>
+                            </div>
+                            <div class="col-md-3" ng-if="i == 0">
+                                <label>&nbsp;</label>
+                                <button type="button" class="btn btn-sm btn-primary btn-w-xs text-left center-block add_contact" ng-click="add_address()">+</button>
+                                <span></span>
+                            </div>
+                            <div class="col-md-3" ng-if="i != 0">
+                                <label>&nbsp;</label>
+                                <button type="button" class="btn btn-sm btn-primary btn-w-xs text-left center-block add_contact" ng-click="remove_this(i,addresses)">-</button>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>ZIP <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                                <input  type="text" class="form-control" capitalize data-ng-model="address.zip" ng-blur="get_state_county()" placeholder="ZIP" required ng-class="ngInvalidRequired" >                      
+                                <span></span>
+                            </div>
+                            <div class="col-md-2">
+                                <label>City <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                                <input  type="text" class="form-control" capitalize data-ng-model="address.city" required ng-class="ngInvalidRequired" placeholder="City">
+                                <span></span>
+                            </div>
+                            <div class="col-md-2">
+                                <label>State <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>   
+                                <input type="text" capitalize data-ng-model="address.state" name="State"  class="form-control ng-pristine ng-invalid ng-invalid-required" placeholder="State"  required ng-class="ngInvalidRequired"
+                                       typeahead="state.STATECD as state.STATENAME for state in stateList | filter:$viewValue | limitTo:8" ng-blur="get_county()" ng-change="get_states()" typeahead-template-url="views/usl/stateTemplate.html" >
+                                <span></span>
+                            </div>
+                            <div class="col-md-2">
+                                <label>County</label>
+                                <input type="text" capitalize data-ng-model="address.county" name="County" class="form-control" placeholder="County"
+                                       typeahead="county.county_name for county in Counties | filter:$viewValue | limitTo:8"> 
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <hr>
+                <div class="form-group" ng-repeat="(i,contact) in contacts">
+                    <div class="row">
+                        <div class="col-md-2" ng-if="i == 0">
+                            <label>Contact Type</label>
+                            <input  type="text" class="form-control" ng-init="contact.type = 'Primary'" value="Primary" capitalize data-ng-model="contact.type" readonly="readonly">
+                            <span></span>
+                        </div>
+                        <div class="col-md-2" ng-if="i != 0">
+                            <label>Contact Type</label>
+                            <input  type="text" class="form-control" placeholder="Office,Home,etc" capitalize data-ng-model="contact.type">
+                            <span></span>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Contact Title</label>
+                            <input  type="text" class="form-control" capitalize data-ng-model="contact.title" placeholder="Contact Title">
+                            <span></span>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Contact Name</label>
+                            <input  type="text" class="form-control" capitalize data-ng-model="contact.name" placeholder="Contact Name">
+                            <span></span>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Email</label>
+                            <input  type="email" class="form-control" capitalize data-ng-model="contact.email" placeholder="Email" ng-pattern="email_validation">
+                            <span></span>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Phone</label>
+                            <input  type="text" class="form-control" capitalize data-ng-model="contact.phone" placeholder="(111)222-3333" ng-pattern="telePhoneValidation" data-mask="(999)999-9999">
+                            <span></span>
+                        </div>
+                        <div class="col-md-2" ng-if="i == 0">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-sm btn-primary btn-w-xs text-left center-block add_contact" ng-click="add_cont()">+</button>
+                            <span></span>
+                        </div>
+                        <div class="col-md-2" ng-if="i != 0">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-sm btn-primary btn-w-xs text-left center-block add_contact" ng-click="remove_this(i,contacts)">-</button>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <hr>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Max Overpayment</label>
+                            <input  type="text" class="form-control" capitalize data-ng-model="org.max_overpayment" placeholder="Max Overpayment" ng-pattern="DecimalNumber" ng-blur="displayDecimal(org.max_overpayment)">                       
+                            <span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Notification Email <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                            <input  type="email" class="form-control" capitalize data-ng-model="org.notification_email" placeholder="Notification Email" required ng-class="ngInvalidRequired" ng-pattern="email_validation">                       
+                            <span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <label class="ui-checkbox"><input type="checkbox" data-ng-model="org.ticket_functionality" ng-true-value="true" ng-false-value="false" ><span>Ticket Functionality</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">    
+                    <div class="row">
+                        <div class="col-md-12 text-left">
+                            <button class="btn btn-sm btn-success" data-ng-click="add_org()">SAVE</button>
+                            <button class="btn btn-sm btn-default" data-ng-click="reset()">Revert Changes</button>
+                            <button class="btn btn-sm btn-default" data-ng-click="cancel()" ng-disabled="showBtn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default" ng-show="show_box">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Confirm</div>
+                    <div class="panel-body">
+                        <script type="text/ng-template" id="delConfirm.html">
+                            <div class="modal-body">
+                            <h4 class="text text-danger">Are you sure you want to delete this information?</h4>
+                            </div>
+                            <div class="modal-footer">
+                            <button class="btn btn-danger" ng-click="ok()">Yes, its fine</button>
+                            <button class="btn btn-default" ng-click="cancel()">No</button>
+                            </div>
+                        </script>
+                    </div>
+                </section>
+                <div class="callout callout-info">
+                    <p><small><i>{{last_update}}</i></small></p>
+                </div>
+                </fieldset>
+            </form>
+        </div>
+    </section> 
+    <!-- Company -->
+
+</section>
+
+

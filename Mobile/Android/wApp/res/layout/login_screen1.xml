@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_lightwhite"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linear_layout_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_welcometext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/welcome_text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/splash_background_blue"
+            android:textSize="@dimen/welcome_textsize" />
+
+        <EditText
+            android:id="@+id/et_useremail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dip"
+            android:layout_marginTop="16dip"
+            android:drawableLeft="@drawable/emailhover"
+            android:drawablePadding="5dp"
+            android:hint="Email address"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@color/splash_background_blue"
+            android:textColorHint="@color/textGreyColor" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dip"
+            android:drawableLeft="@drawable/passworhover"
+            android:drawablePadding="5dp"
+            android:hint="Password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:padding="10dip"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/splash_background_blue"
+            android:textColorHint="@color/textGreyColor" />
+
+        <Button
+            android:id="@+id/buttonlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_hover"
+            android:text="Login"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Forgot Password?"
+                android:textColor="@drawable/textcolor"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dip"
+                android:text="|"
+                android:textColor="@color/textGreyColor"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Register"
+                android:textColor="@drawable/textcolor"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="170dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/textGreyColor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Login with Facebook or Google+"
+                android:textColor="@drawable/textcolor"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/iv_facebook"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/fb_icon" />
+
+            <View
+                android:id="@+id/txtdivider"
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_margin="3dip"
+                android:background="@color/grey" />
+
+            <ImageView
+                android:id="@+id/iv_gplus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/g_plus" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

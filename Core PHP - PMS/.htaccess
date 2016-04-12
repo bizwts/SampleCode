@@ -1,0 +1,48 @@
+# Enable rewrite engine and route requests to framework
+RewriteEngine On
+
+# Some servers require you to specify the `RewriteBase` directive
+# In such cases, it should be the path (relative to the document root)
+# containing this .htaccess file
+#
+# RewriteBase /
+
+RewriteRule ^(tmp)\/|\.ini$ - [R=404]
+
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L,QSA]
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+php_value max_execution_time 10000
+php_value memory_limit 1024M
+php_value upload_max_filesize 1024M
+php_value post_max_size 1024M
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+
+# Your document html
+  ExpiresByType text/html "access plus 0 seconds"
+
+# Media: images, video, audio
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType audio/ogg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType video/ogg "access plus 1 month"
+  ExpiresByType video/webm "access plus 1 month"
+
+# CSS and JavaScript
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+</IfModule>
+
+Options -Indexes
+
+ErrorDocument 404 http://wts/_wts/pms/404
+ErrorDocument 403 http://wts/_wts/pms/404

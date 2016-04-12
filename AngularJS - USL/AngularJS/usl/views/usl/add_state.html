@@ -1,0 +1,87 @@
+<section class="page-form-ele page" data-ng-controller="state">
+    <!-- Company -->
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> State</strong></div>
+        <div class="panel-body">
+            <form name="form_state" class="form-validation" novalidate>
+                <fieldset ng-disabled="ctrl_disable">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>State <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                            <input type="text" 
+                                   capitalize data-ng-model="state.code"
+                                   typeahead="state.STATECD as state.STATENAME for state in stateList | filter:$viewValue | limitTo:8"
+                                   class="form-control"
+                                   required ng-class="[ngInvalidRequired, validinfo]" ng-change="get_states()"
+                                   placeholder="Search" typeahead-template-url="views/usl/stateTemplate.html">
+                            <span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Associated Legal USL Organization <small><span class="color-danger"><i class="fa fa-asterisk"></i></span></small></label>
+                            <select class="form-control" data-ng-model="state.org_id" ng-options="org.id as org.name for org in orgs" required ng-class="ngInvalidRequired">
+                                <option style="display:none" value="">Select a Organization</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                    </div>
+                </div>
+                <label>Select all the PLAN CLASSES applicable for the selected state</label>
+                <hr>
+                <div class="form-group">
+                    <div class="row" ng-repeat="planclass in planclass_list">
+                        <div class="col-md-12">
+                            <label class="ui-checkbox"><input type="checkbox" data-ng-model="planclass.value" ng-true-value="Yes" ng-false-value="No" ><span>{{planclass.code}} - {{planclass.name}}</span></label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="ui-checkbox"><input type="checkbox" data-ng-model="state.dunning_letter" ng-true-value="Yes" ng-false-value="No" ><span><strong>Is a Dunning Letter Required for this State?</strong></span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="ui-checkbox"><input type="checkbox" data-ng-model="state.declaration_page" ng-true-value="Yes" ng-false-value="No" ><span><strong>Is a Declaration Page Required for this State?</strong></span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">    
+                    <div class="row">
+                        <div class="col-md-12 text-left">
+                            <button class="btn btn-sm btn-success" data-ng-click="add_state()">SAVE</button>
+                            <button class="btn btn-sm btn-default" data-ng-click="reset()">Revert Changes</button>
+                            <button class="btn btn-sm btn-default" data-ng-click="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="callout callout-info">
+                    <p><small><i>{{last_update}}</i></small></p>
+                </div>
+                </fieldset>
+            </form>
+        </div>
+    </section> 
+    <!-- Company -->
+
+</section>
+
+

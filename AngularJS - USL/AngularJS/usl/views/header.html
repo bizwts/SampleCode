@@ -1,0 +1,106 @@
+<header class="clearfix">
+
+    <!-- Logo -->
+    <div class="logo">
+        <a href="#/">
+            <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+            <span><img src="images/usllogo.png" alt="US Legal Logo" class="img172_35"></span>
+        </a>
+    </div>
+
+    <!-- needs to be put after logo to make it working-->
+    <div class="menu-button" toggle-off-canvas>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+
+    <div class="top-nav">
+        <ul class="nav-left list-unstyled">
+            <li>
+                <a href="#/dashboard" data-toggle-min-nav
+                             class="toggle-min"
+                             ><i class="fa fa-bars"></i></a>
+            </li>
+            <li class="dropdown text-normal nav-profile">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <!--<img src="images/g1.jpg" alt="" class="img-circle img30_30">-->
+                    <span class="hidden-xs">
+                        <span data-i18n="{{user_info.username}}"></span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu dropdown-dark with-arrow">
+                    <li ng-show="user_info.designation == 'All Access'">
+                        <a href="#/usl/add_employee/{{user_info.id}}" ng-click="profile_link()">
+                            <i class="fa fa-user"></i>
+                            <span data-i18n="My Profile"></span>
+                        </a>
+                    </li>
+                    <li data-ng-controller="login_controller">
+                        <a href="javascript:;" ng-click="user_logout()">
+                            <i class="fa fa-sign-out"></i>
+                            <span data-i18n="Log Out"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul> 
+
+        <ul class="nav-right pull-right list-unstyled" ng-show="user_info.id">
+            <li class="dropdown" data-ng-controller="email_notification">
+                <a data-toggle="dropdown" class="dropdown-toggle bg-warning" href="javascript:;">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge badge-info">{{email_repies.length}}</span>
+                </a>
+                <div class="dropdown-menu pull-right with-arrow panel panel-default">
+                    <div class="panel-heading">
+                        You have {{email_repies.length}} mails.
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="mail in email_repies">
+                            <a class="media" href="#/usl/{{mail.entity_name == 'CDL' ? 'case' : 'matter'}}/{{mail.entity_id}}">
+                                <span class="pull-left media-icon">
+                                    <span class="square-icon sm bg-warning"><i class="fa fa-envelope-o"></i></span>
+                                </span>
+                                
+                                <div class="media-body">
+                                    <span class="block">{{mail.subject}}</span>
+                                    <span class="text-muted block">{{mail.timestamp| date:"MMM dd yyyy"}}</span>
+                                </div>
+                            </a>
+                        </li>                       
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown" data-ng-controller="recent_todo">
+                <a href="#/tasks/{{user_info.id}}" class="bg-success" title="Employee Tasks">
+                    <i class="fa fa-tasks"></i>
+                    <span class="badge badge-info">{{taskRemainingCount}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/tasks" class="bg-info" title="All Tasks">
+                    <i class="fa fa-tasks"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</header>
+<section class="panel panel-default" data-ng-controller="EventsCtrl" ng-show="idlenotify">
+    <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Modal</div>
+    <div class="panel-body">
+        <script type="text/ng-template" id="idleNotificatoin.html">
+            <div class="modal-body">
+                <h4>Your session is about to expire!</h4>
+                <br/>
+                Do you want to continue your session?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="cancel()">No, Logout</button>
+                <button class="btn btn-default" ng-click="ok()">Yes, Keep Working</button>
+            </div>
+        </script>
+    </div>
+</section>

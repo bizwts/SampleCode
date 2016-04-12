@@ -1,0 +1,58 @@
+<div class="page-signin" data-ng-controller="login_controller">
+
+    <div class="signin-header">
+        <div class="container text-center">
+            <section class="logo">
+                <span><img src="images/usllogo.png" alt="US Legal Logo" class="img172_35"></span>
+            </section>
+        </div>
+    </div>
+
+    <div class="signin-body">
+        <div class="container">
+            <div class="form-container">
+
+                <form class="form-horizontal form-validation" name="form_constraints" class="form-validation" data-ng-submit="check_login()" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input type="text"
+                                       class="form-control no-capital"
+                                       placeholder="User Name"
+                                       data-ng-model="log_username"
+                                       required ng-class="ngInvalidRequired"
+                                       >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+                                <input type="password"
+                                       class="form-control no-capital"
+                                       placeholder="Password"
+                                       data-ng-model="log_password"
+                                       required ng-class="ngInvalidRequired"
+                                       >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <button data-ng-model="log_btn" type="submit" class="btn btn-primary btn-lg btn-block cursor-pointer">Log in</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <section>
+                    <p class="text-center"><a href="#/usl/forgot">Forgot your password?</a></p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="light_gray">#c1c1c1</color>
+    <color name="green">#00ff00</color>
+    <color name="splash_background_blue">#4268e4</color>
+    <color name="background_lightgray">#f5f5f5</color>
+    <color name="actionbar_color">#400000FF</color>
+    <color name="backactionbar_color">#70a4a4a4</color>
+    <color name="drawer_arrow_second_color">#303f9f</color>
+    <color name="button_color">#27AE61</color>
+    <color name="button_colorhover">#aa27AE61</color>
+    <color name="trasparentcolor">#00000000</color>
+    <color name="blue_border">#0D4F8B</color>
+    <color name="blue_background">#232464</color>
+    <color name="dark_blue_actionbar">#151B54</color>
+    <color name="blue_backround">#1D88EA</color>
+    <color name="overlay_hash_color">#80000000</color>
+    <color name="laser_line_color">#80FF0000</color>
+    <color name="transparent">#00000000</color>
+    <color name="backroundcolor">#E2E2E2</color>
+    <color name="textcolor_gray">#3D3D3D</color>
+    <color name="textcolor">#feff61</color>
+    <color name="textcolorblue">#0A1123</color>
+    <color name="background">#0A1123</color>
+    <color name="grey">#D8D8D8</color>
+    <color name="darkgrey">#6A6A6A</color>
+    <color name="whitetransparent">#E6FFFFFF</color>
+    <color name="hover">#aaFFFFFF</color>
+    <color name="text_hint_color">#969696</color>
+    <color name="white">#ffffff</color>
+    <color name="text">#787878</color>
+    <color name="textGreyColor">#a4a4a4</color>
+    <color name="listActivated">#d1d1d1</color>
+    <color name="Black">#000000</color>
+    <color name="Editcolor1">#565656</color>
+    <color name="Editcolor2">#BBBBBB</color>
+    <color name="temphover">#BBBBBB</color>
+    <color name="headcolor">#282828</color>
+    <color name="red">#760605</color>
+    <color name="background_coloryellow">#FFFFBD</color>
+    <color name="border_color">#D9D9D9</color>
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="half_black">#808080</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#80738ffe</color>
+    <color name="background_lightwhite">#F5F5F5</color>
+
+</resources>

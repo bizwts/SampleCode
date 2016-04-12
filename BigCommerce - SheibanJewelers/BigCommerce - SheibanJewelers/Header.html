@@ -1,0 +1,63 @@
+<header class="header">
+        <div id="AjaxLoading">
+            <div class="ajax-loader">
+                <img src="%%GLOBAL_IMG_PATH%%/loader.png" alt="" />&nbsp;%%LNG_LoadingPleaseWait%%
+            </div>
+        </div>
+        <!--<div class="header-top">
+            <div class="container">
+                <p>
+                    <strong>Limited-Time Offers:</strong> Mid-Season Sale Up to 70% OFF. <a href="#" title="Shop now" class="btn-top">Shop now</a><a href="javascript:void(0)" class="close">close</a>
+                </p>
+            </div>
+            <script>
+              if (jQuery.cookie('headerTop') == 'closed') {
+                jQuery('.header-top').remove();
+              }
+
+              jQuery('.header-top a.close').bind('click',function(){
+                jQuery('.header-top').remove();
+                //jQuery.cookie('headerTop', 'closed', {expires:1, path:'/'});
+              });
+            </script>
+        </div>-->
+        %%GLOBAL_MaintenanceNotice%%
+        %%Panel.TopMenu%%
+   
+        <div id="Header">
+            <div class="container">
+                <div class="HeaderStorePhoneNumber">%%Panel.HeaderStorePhoneNumber%%</div>
+                <div class="header-logo col-xs-4">
+                    %%GLOBAL_HeaderLogo%%
+                </div>
+                           
+                <div class=" CartLink js-drawermenu-cart" style="display:%%GLOBAL_HideCartOptions%%">
+                    <div class="DropdownCart" style="display:none"></div>
+
+                    <a href="javascript:void(0);" title="%%LNG_ViewCart%%" id="ShowDropdownCart">Shopping Cart <span id="items-count">%%GLOBAL_CartItems%%</span></a>
+                </div>
+                
+                <!--<div class="header-panel-bottom col-xs-8">
+                    <p class="free_shipping">Free shipping on All Orders. No Minimum Purchase.</p>
+                </div>-->
+                <div class="only-mobile header-secondary">
+                    %%Panel.HeaderSearch%%
+                </div>
+            </div>
+                  
+        </div>
+
+    
+        <div class="PageMenu">
+            <div class="HL-LogoScroll">
+                    <a href="%%GLOBAL_ShopPath%%" title="%%GLOBAL_StoreName%%" ><img src="/product_images/uploaded_images/logo-scroll.png"  id="LogoImages" alt="Logo" /> </a>
+                </div>
+            <div class="container">
+                <div class="inner">
+                    %%Panel.SideCategoryList%%
+                </div>
+            </div>
+        </div>
+    %%Panel.HL-Settings%%
+</header>
+

@@ -1,0 +1,727 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+
+<!--<style>
+
+/* The CSS */
+select {
+    /*padding:2px;
+    /*margin: 0;*/
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    /*-webkit-box-shadow: 0 1px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 1px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 1px 0 #ccc, 0 -1px #fff inset;*/
+    background: #f8f8f8;
+    color:#888;
+    border:1px solid #333;
+    /*outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;*/
+    cursor:pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+    content:'<>';
+    font:12px "Consolas", monospace;
+    color:#fff;
+        font-weight:bold;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:0px; top:0px;
+    padding:0.7px 4px 4px 4px;
+    border-bottom:1px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+        background: #248AFC;
+        -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:3px 3px 0px 0px;
+}
+
+label:before {
+    content:'';
+    right:4px; top:0px;
+    width:20px; height:20px;
+    background:#f8f8f8;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+</style>-->
+
+
+<style>
+    .subProdDetails{
+        margin-left: 0px !important;
+    }
+    .subProdImgStyle{
+        text-align: center !important;
+    }
+    .tagimg {
+        margin-right:5px;
+    }	
+
+    .mp {
+        cursor:pointer;
+    }
+    #fitdetailsdesc{
+        display: none;
+    }
+    #detailsandcaredesc{
+        display: none;
+    }
+    #deliveryandreturndesc{
+        display: none;
+    }
+
+    .styled-select {
+        background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+        height: 20px;
+        overflow: hidden;
+        width: 240px;
+    }
+
+    .styled-select select {
+        background: transparent;
+        border: none;
+        font-size: 14px;
+        height: 20px;
+        padding: 5px; /* If you add too much padding here, the options won't show in IE */
+        width: 268px;
+    }
+
+    .styled-select.slate {
+        background: url(../media/images/selectwhite.png) no-repeat right center;
+        height: 34px;
+        width: 240px;
+        border-radius:6px;
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+    }
+
+    .styled-select.slate select {
+        border: 1px solid #ccc;
+        height: 34px;
+        width: 268px;
+    }
+
+    .custom-dropdown {
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    .custom-dropdown {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .custom-dropdown--small {
+        font-size: .7em;
+        height:30px;
+    }
+
+    .custom-dropdown--emerald::before {
+        /*background-color: #1aa181;*/
+        /*background-color: #3394FC;*/
+
+    }
+
+    /*.custom-dropdown::before {
+       width: 3em;
+       right: 0;
+       top: 0;
+       bottom: 0;
+       border-radius:0 6px 6px 0;
+       -webkit-border-radius:0 6px 6px 0;
+       -moz-border-radius:0 6px 6px 0;
+    }*/
+
+    /*.custom-dropdown::before, .custom-dropdown::after {
+       content: "";
+       position: absolute;
+       pointer-events: none;
+    }*/
+
+    .custom-dropdown--emerald::after {
+        color: rgba(0,0,0,.4);
+    }
+
+    .custom-dropdown::before, .custom-dropdown::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .custom-dropdown__select {
+        padding-right: 2.5em;
+        border: 0;
+        border-radius:6px;
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .custom-dropdown__select--emerald {
+        background-color: #20b390;
+        /*color: #fff;*/
+    }
+
+    .custom-dropdown__select {
+        /*font-size: inherit;*/
+        /*padding: .2em;*/
+        margin: 0;
+    }
+
+    select.DropDownSize{
+        width: 100%;
+        border: 1px solid #000;
+        border-radius: 0px;
+    }
+
+    select:not([size]):not([multiple]), select[size="0"], select[size="1"] {
+        /*background-color: buttonface;*/
+        background: transparent;
+        border: 1px solid #ddd;
+    }
+
+    keygen, select, select[size="0"], select[size="1"] {
+        border-radius: 0px;
+        border-color: rgb(169, 169, 169);
+    }
+
+    select {
+        -webkit-appearance: menulist;
+        box-sizing: border-box;
+        align-items: center;
+        border: 1px solid;
+        border-image-source: initial;
+        border-image-slice: initial;
+        border-image-width: initial;
+        border-image-outset: initial;
+        border-image-repeat: initial;
+        white-space: pre;
+        -webkit-rtl-ordering: logical;
+        color: black;
+        background-color: white;
+        cursor: default;
+    }
+
+    keygen, select {
+        border-radius: 5px;
+    }
+
+    custom-dropdown--emerald::after {
+        color: rgba(0,0,0,.4);
+    }
+
+    .custom-dropdown {
+        width: 250px;
+
+        background: url(http://builder.rye51.com/media/images/selectwhite.png);
+        background-position: right; 
+        background-repeat: no-repeat;
+
+    }
+
+</style>
+
+<!--<script src='<?php echo Mage::getBaseUrl('js') ?>functions-new.js' type='text/javascript'></script>-->
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php
+$_product = $this->getProduct();
+?>
+
+
+<?php
+$options = Mage::getModel('catalog/product_option')->getProductOptionCollection($_product);
+$options = $_product->getOptions();
+$optionItemVal = array();
+$optionItemValColor = array();
+foreach ($options as $option) {
+    if ($option->getType() === 'drop_down') {
+        $values = Mage::getSingleton('catalog/product_option_value')->getValuesCollection($option);
+        if ($option->getDefaultTitle() == "Size") {
+            $optId = $option->getId();
+        } else if ($option->getDefaultTitle() == "Color") {
+            $optIdColor = $option->getId();
+        }
+        if ($option->getDefaultTitle() == "Size") {
+            foreach ($values as $value) {
+                $tempArray = array();
+                $tempArray['title'] = $value->getTitle();
+                $tempArray['option_type_id'] = $value->option_type_id;
+                $optionItemVal[] = $tempArray;
+            }
+        }
+        if ($option->getDefaultTitle() == "Color") {
+            foreach ($values as $value) {
+                $tempArray = array();
+                $tempArray['title'] = $value->getTitle();
+                $tempArray['option_type_id'] = $value->option_type_id;
+                $optionItemValColor[] = $tempArray;
+            }
+        }
+    }
+}
+?>
+<?php
+/*
+  $options = Mage::getModel('catalog/product_option')->getProductOptionCollection($_product);
+  $options = $_product->getOptions();
+
+  foreach ($options as $val) {
+  if ($val->getType() != "field") {
+  $optId = $val->getId();
+  $titletext = $val->getTitle();
+  //print_r($optId);
+  }
+  }
+
+  $optionItemVal = array();
+  foreach ($options as $option) {
+  foreach ($option->getValues() as $key => $values) {
+  $optionItemVal[$key] = $values->getData();
+  $optionItemVal[$key]['optionName'] = $option->getDefaultTitle();
+  }
+  } */
+?>
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential productView">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="product-img-box" >
+                <?php echo $this->getChildHtml('media') ?><!-- <img   src="<?php // echo Mage::getBaseUrl('media')  ?>images/detail.png" /> -->
+            </div>
+
+            <div class="product-shop span4 detailleft"><!--class="poduct_shop_padding"-->
+                <div>
+                    <div class="detailhead">
+                        <h3 style="font-weight: normal;">RYE 51 | <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h3>
+                    </div>
+                    <!--<div class="review_email_con">-->
+                    <?php //echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+                    <?php // if ($this->canEmailToFriend()):  ?>
+                                    <!--<p class="email-friend"><a href="<?php // echo $this->helper('catalog/product')->getEmailToFriendUrl($_product)     ?>"><?php // echo $this->__('Email to a Friend')     ?></a></p>-->
+                    <?php // endif; ?>
+                    <!--</div>-->
+
+                    <?php echo $this->getChildHtml('alert_urls') ?>
+                    <?php
+                    $price = $_product['price'];
+                    $specialprice = $_product->getSpecialPrice();
+                    if ($specialprice == $price || $specialprice == '') {
+                        ?>
+                        <div class="detailPrice">
+                            <h3 style="font-weight: normal;"><?php echo "$&nbsp;" . number_format($price, 2, '.', ''); ?></h3>
+                        </div>
+
+                    <?php } else { ?>
+                        <div>
+                            <span>Regular Price:</span>
+                            <div class="detailPrice">
+                                <h3 style="font-weight: normal;text-decoration: line-through;"><?php echo "$&nbsp;" . number_format($price, 2, '.', ''); ?></h3>
+                            </div>
+                        </div>
+                        <div>
+                            <span>Special Price:</span>
+                            <div class="detailPrice">
+                                <h3 style="font-weight: normal;"><?php echo "$&nbsp;" . number_format($specialprice, 2, '.', ''); ?></h3>
+                            </div>
+
+                        </div>
+                    <?php } ?>
+
+                    <div class="clear"></div>
+                    <?php echo $this->getChildHtml('extrahint') ?>
+                    <!-- <div class="sku_stock_con"> -->
+                    <!-- <label><?php // echo $this->__('Product code');     ?>:</label><span><?php // echo $_product->getSku()     ?></span> -->
+                    <?php // echo $this->getChildHtml('product_type_data')  ?>
+                    <!-- </div> -->
+                    <!-- <div class="clear"></div> -->
+                </div>
+                <!-- PRODUCT TAGS BLOCK START-->
+
+                <?php
+// instantiate the tags class for products
+                $_tags = new Mage_Tag_Block_Product_List();
+                ?>
+                <?php if ($_tags->getTags()): ?>
+                    <div class="short-description">
+                        <div style="border-bottom:1px solid #000;" id="detaildescription">
+                            <div class="custmHeadGrid detailMenu mp">
+                                TAGS
+                                <span class="selectOption" id="fitOptn"></span>
+                            </div>
+                            <div class="downArrowGrid">
+                                <a href="javascript:void(0)">
+                                    <img src="<?php echo Mage::getBaseUrl('media') ?>images/arrow20.png" />
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <p class="descStyle" id="detaildescriptiondesc">
+                            <?php
+                            foreach ($_tags->getTags() as $tag):
+                                if ($tag->getName() == 'Italian textile') {
+                                    ?>
+                                    <a href="#"><img src="<?php echo Mage::getBaseUrl('media') ?>tags/italian-textile.gif" 	 alt="Italian textile" class="tagimg" align="bottom" title="Italian textile"></a>
+                                <?php } elseif ($tag->getName() == 'Made in usa') { ?>
+                                    <a href="#"><img src="<?php echo Mage::getBaseUrl('media') ?>tags/made-in-usa.gif"  alt="Made in USA" class="tagimg" align="bottom" title="Made in USA"></a>
+                                <?php } elseif ($tag->getName() == 'Organic cotton') { ?>
+                                    <a href="#"><img src="<?php echo Mage::getBaseUrl('media') ?>tags/organic-cotton.gif" class="tagimg" align="bottom"  alt="Organic cotton" title="Organic cotton"></a>
+                                <?php } elseif ($tag->getName() == 'Small batch') { ?>
+                                    <a href="#"><img src="<?php echo Mage::getBaseUrl('media') ?>tags/small-batch.gif" class="tagimg" align="bottom" alt="Small batch" title="Small batch"></a>
+                                <?php } endforeach; ?>
+
+                        </p>
+                    </div>
+                <?php endif; ?>
+
+
+                <!-- PRODUCT TAGS BLOCK END-->
+                <?php if ($_product->getShortDescription()): ?>
+                    <div class="short-description">
+                        <div style="border-bottom:1px solid #000;" id="detaildescription">
+                            <div class="custmHeadGrid detailMenu mp">
+                                <h4 style="font-weight: normal;">DESCRIPTION</h4>
+
+                            </div>
+                            <div class="downArrowGrid">
+                                <a href="javascript:void(0)">
+                                    <img src="<?php echo Mage::getBaseUrl('media') ?>images/arrow20.png" />
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div  class="descStyle" id="detaildescriptiondesc">
+                            <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (strlen($_helper->productAttribute($_product, nl2br($_product->getFitDetails()), 'fit_details')) > 0) { ?>
+                    <div class="short-description">
+                        <div style="border-bottom:1px solid #000;" id="fitdetails">
+                            <div class="custmHeadGrid detailMenu mp">
+                                <h4 style="font-weight: normal;">FIT DETAILS</h4>
+                            </div>
+                            <div class="downArrowGrid">
+                                <a href="javascript:void(0)"><img src="<?php echo Mage::getBaseUrl('media') ?>images/arrow20.png" /></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div  class="descStyle" id="fitdetailsdesc">
+                            <?php echo $_helper->productAttribute($_product, nl2br($_product->getFitDetails()), 'fit_details') ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                <?php if (strlen($_helper->productAttribute($_product, nl2br($_product->getFitDetails()), 'details_care')) > 0) { ?>
+                    <div class="short-description">
+                        <div style="border-bottom:1px solid #000;" id="detailsandcare">
+                            <div class="custmHeadGrid detailMenu mp">
+                                <h4 style="font-weight: normal;">DETAILS & CARE</h4>
+
+                            </div>
+                            <div class="downArrowGrid">
+                                <a href="javascript:void(0)"><img src="<?php echo Mage::getBaseUrl('media') ?>images/arrow20.png" /></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div  class="descStyle" id="detailsandcaredesc">
+                            <?php echo $_helper->productAttribute($_product, nl2br($_product->getDetailsCare()), 'details_care') ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                <?php if (strlen($_helper->productAttribute($_product, nl2br($_product->getFitDetails()), 'delivery_return')) > 0) { ?>
+                    <div class="short-description">
+                        <div style="border-bottom:1px solid #000;" id="deliveryandreturn">
+                            <div class="custmHeadGrid detailMenu mp">
+                                <h4 style="font-weight: normal;">DELIVERY & RETURN</h4>
+
+                            </div>
+                            <div class="downArrowGrid">
+                                <a href="javascript:void(0)">
+                                    <img src="<?php echo Mage::getBaseUrl('media') ?>images/arrow20.png" />
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div  class="descStyle" id="deliveryandreturndesc">
+                            <?php echo $_helper->productAttribute($_product, nl2br($_product->getDeliveryReturn()), 'delivery_return') ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
+
+                <?php if (count($optionItemValColor) > 0): ?>
+                    <h4 style="font-weight: normal;">Color <span id="SelectedColor"></span></h4>
+                    <ul id="color-code">
+                        <?php foreach ($optionItemValColor as $value): ?>
+                            <?php
+                            $filePath = Mage::getBaseDir("media") . DS . "meari".DS."background".DS. str_replace(' ', '_',$value['title']) . ".jpg";
+                            if (file_exists($filePath)) {
+                                $fileFullPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."meari/background/".str_replace(' ', '_',$value['title']).".jpg";
+                            } else {
+                               $fileFullPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."meari/background/".str_replace(' ', '_',$value['title']).".png";
+                            }
+                            ?>   
+                            <li style="padding:3px; float: left;" class="code-list" id="code-<?php echo $value['option_type_id']; ?>"><a href="javascript:void(0)" onclick="ChangesPriceWithAttribute(<?php echo $value['option_type_id']; ?>, '<?php echo preg_replace('/\s+/', '', $value['title']); ?>')" ><img src="<?php echo $fileFullPath; ?>" /></a></li>                            
+                        <?php endforeach; ?>
+                    </ul>
+                    <div class="clear"></div> <br>
+                    <h4 style="font-weight: normal;">Size</h4>
+                    <span class="custom-dropdown" style="display:none;">
+                        <select class="custom-dropdown__select custom-dropdown__select--emerald DropDownSize required-entry product-custom-option" id="select_<?php echo $optIdColor; ?>" onchange="opConfig.reloadPrice()" title="" name="options[<?php echo $optIdColor; ?>]">
+                            <option value="">Select Color</option>
+                            <?php foreach ($optionItemValColor as $valueColor): ?>
+                                <option value="<?php echo $valueColor['option_type_id']; ?>"><?php echo $valueColor['title']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </span>
+                    <script>
+                        function ChangesPriceWithAttribute(opt, code) {
+                            jQuery(".code-list").css("border", "none");
+                            jQuery("#code-" + opt).css("border", "1px solid #ccc");
+                            jQuery('#select_<?php echo $optIdColor; ?> option').removeAttr("selected");
+                            jQuery('#select_<?php echo $optIdColor; ?> option[value=' + opt + ']').attr("selected", "selected");
+                            jQuery('#SelectedColor').html(' : ' + jQuery('#select_<?php echo $optIdColor; ?> option[value=' + opt + ']').text());
+                            jQuery('#productImg' + code).trigger('click');
+                        }
+                    </script>
+                <?php endif; ?>
+                <?php if (count($optionItemVal) > 0): ?>
+                    <span class="custom-dropdown">
+                        <select class="custom-dropdown__select custom-dropdown__select--emerald DropDownSize required-entry product-custom-option" id="select_<?php echo $optId; ?>" onchange="opConfig.reloadPrice()" title="" name="options[<?php echo $optId; ?>]">
+                            <option value="">Select Size</option>
+                            <?php foreach ($optionItemVal as $value): ?>
+                                <option value="<?php echo $value['option_type_id']; ?>"><?php echo $value['title']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </span>
+                    <br />
+                    <div id="custMsg"></div>
+                    <div class="clear"></div>
+                <?php endif; ?>
+
+                <div class="add_to_cart_links_con" style="border:none !important;">
+                    <div class="add_to_cart_con">
+                        <?php if ($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="add_to_links_con">
+                        <?php // echo $this->getChildHtml('addto')   ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--<div class="share_con">
+                <?php // echo $this->getLayout()->createBlock('cms/block')->setBlockId('view_share')->toHtml()  ?>
+                </div>-->
+                <?php // echo $this->getChildHtml('other');?>
+
+                <?php //if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php // echo $this->getChildChildHtml('container1', '', true, true)   ?>
+                <?php // endif; ?>
+
+            </div>
+    </div>
+    <div class="clearer"></div>
+    <?php // if ($_product->isSaleable() && $this->hasOptions()): ?>
+    <?php // echo $this->getChildChildHtml('container2', '', true, true)   ?>
+    <?php // endif; ?>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function (button, url) {
+
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+                form.action = url;
+            }
+            var e = null;
+            try {
+                this.form.submit();
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+
+    productAddToCartForm.submitLight = function (button, url) {
+
+        if (this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+                if (methodName.match(/^validate-datetime-.*/i)) {
+                    delete Validation.methods[methodName];
+                }
+            }
+
+            if (this.validator.validate()) {
+                if (url) {
+                    this.form.action = url;
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+    //]]>
+</script>
+</div>
+
+<!--    <div class="product-collateral">
+<?php // foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html): ?>
+        <div class="box-collateral <?php // echo "box-{$alias}"    ?>">
+<?php // if ($title = $this->getChildData($alias, 'title')):?>
+            <h2><?php // echo $this->escapeHtml($title);    ?></h2>
+<?php // endif; ?>
+<?php // echo $html;  ?>
+        </div>
+<?php // endforeach;?>
+<?php // echo $this->getChildHtml('upsell_products')   ?>
+<?php // echo $this->getChildHtml('product_additional_data')  ?>
+    </div>-->
+</div>
+
+<div class="clear"></div>
+
+<?php
+if ($_product) {
+    ?>
+
+    <div class="short-description wearStyle productlistTopSpc">
+        <div style="border-bottom:1px solid #000;text-align: center;" id="changeFit">
+            <h3>YOU MAY ALSO LIKE</h3>
+        </div>
+        <!--<div class="downArrowGrid"> 
+                <a href="javascript:void(0)"><img src="<?php echo Mage::getBaseUrl('media') ?>images/arrow20.png" /></a>
+        </div>-->
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+    <div id="div_top_hypers">
+        <ul id="ul_top_hypers">
+            <?php
+            // get collection of categories this product is associated with
+            $categories = $_product->getCategoryCollection()
+                    ->setPage(1, 1)
+                    ->load();
+
+            //->setVisibility(array(2,3,4));
+            // if the product is associated with any category
+            if ($categories->count())
+                foreach ($categories as $_category) {
+                    //$cur_category = Mage::getModel('catalog/category')->load($_category->getId());
+                    //echo "<pre>";
+                    //print_r($_category);
+                    //exit;
+                    ?>
+                    <?php
+                    $products = Mage::getResourceModel('catalog/product_collection')
+                            ->addCategoryFilter($_category)
+                            ->addAttributeToSelect('small_image');
+                    $products->getSelect()->limit(4);
+                    $products->getSelect()->order('rand()');
+                    $i = 0;
+                    foreach ($products as $productModel) {
+                        $_product = Mage::getModel('catalog/product')->load($productModel->getId());
+                        $width = 150;
+                        $height = 150;
+                        $_imageUrl = $this->helper('catalog/image')->init($productModel, 'small_image')->resize($width, $height);
+                        ?>
+                        <li class="subProdImgStyle <?php echo ($i == 0) ? 'firtsYouMayLike' : '' ?>">
+                            <div class="subProdInner">
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(150); ?>" width="150" height="150" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="a_top_hypers" /></a>
+                                <div class="subProdDetails">
+                                    <div>
+                                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a>
+                                    </div>
+                                    <div>
+                                        <?php echo $this->getPriceHtml($_product, true) ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                        $i++;
+                    }
+                }
+        }
+        ?>
+        <li class="clear"></li>	
+    </ul>
+</div>
+</div>

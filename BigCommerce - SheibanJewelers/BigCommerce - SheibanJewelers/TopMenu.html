@@ -1,0 +1,72 @@
+
+<div class="TopMenu">
+    <div class="container">
+        <div id="ToggleMenu">Menu</div>
+        <div class="customer-area dropdown only-mobile">
+            <a class="icon-custommer" href="#" data-toggle="dropdown"></a>
+            <ul class="DropdownCustommer dropdown-menu" role="menu">
+                <li><a href="%%GLOBAL_ShopPath%%" title="Home">Home</a></li>
+                <li style="display:%%GLOBAL_HideAccountOptions%%" class="YourAccount">
+                    <a href="%%GLOBAL_ShopPath%%/account.php">%%LNG_YourAccount%%</a>
+                </li>
+                 %%SNIPPET_TopMenuGiftCertificates%%
+                <li style="display:%%GLOBAL_HideWishlist%%"><a href="%%GLOBAL_ShopPath%%/wishlist.php">%%LNG_YourWishList%%</a></li>
+                <li style="display:%%GLOBAL_HideAccountOptions%%">
+                    <div>%%GLOBAL_LoginOrLogoutText%%</div>
+                </li>
+                <li><a href="/checkout.php" title="Checkout">Checkout</a></li>
+            </ul>
+        </div>
+        <ul class="TopLink" style="display:%%GLOBAL_HidePurchasingOptions%%">
+            <li class="HeaderStorePhoneNumber">
+                %%Panel.HeaderStorePhoneNumber%%
+            </li>
+            <li>
+                <div class="phoneIcon"><a href="%%GLOBAL_ShopPath%%/contact-hours/">Contact Us</a></div>
+            </li>
+            <li><a href="%%GLOBAL_ShopPath%%/wishlist.php">Appointments</a></li>
+            %%SNIPPET_TopMenuGiftCertificates%%
+            <li style="display:%%GLOBAL_HideAccountOptions%%" class="YourAccount">
+                <a href="%%GLOBAL_ShopPath%%/account.php">%%LNG_YourAccount%%</a>
+            </li>
+            
+            <li class="js-drawermenu-currency-converter">
+                %%Panel.SideCurrencySelector%%
+            </li>
+            <!--<li class="header-secondary">
+                %%Panel.HeaderSearch%%
+            </li>-->
+            <li class="last">
+                
+                 <div class="HL-Login" style="display:%%GLOBAL_HideAccountOptions%%">
+                    <div>%%GLOBAL_LoginOrLogoutText%%</div>
+                </div>
+                <div class="wishlist-link">
+                    <a href="%%GLOBAL_ShopPath%%/wishlist.php">%%LNG_YourWishList%%</a>
+                </div>
+                
+                <div class="header-secondary">
+                      %%Panel.HeaderSearch%%
+                </div>
+                
+                <!---<div class=" CartLink js-drawermenu-cart" style="display:%%GLOBAL_HideCartOptions%%">
+                    <div class="DropdownCart" style="display:none"></div>
+
+                    <a href="javascript:void(0);" title="%%LNG_ViewCart%%" id="ShowDropdownCart">Shopping Cart <span id="items-count">%%GLOBAL_CartItems%%</span></a>
+                </div>-->
+            </li>
+         </ul>
+         
+    </div>
+</div>
+<script type="text/javascript">
+    if(jQuery('.ChooseCurrencyBox').length > 0){
+        jQuery('.TopMenu').addClass('HL-HasCurrency');
+         }
+        else {
+             jQuery('.TopMenu').addClass('HL-NoCurrency');
+        }
+
+</script>
+
+

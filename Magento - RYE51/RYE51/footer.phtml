@@ -1,0 +1,78 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $routeName = Mage::app()->getRequest()->getRouteName();
+$identifier = Mage::getSingleton('cms/page')->getIdentifier();
+if($identifier == 'shop'): ?>
+<div style="height:130px;"></div>
+<?php endif; ?>	
+	<div class="fullFooter">
+		<div class="footerOuter">
+			<div class="footerCol1">
+				<ul>
+					<li><a href="<?php echo $this->getUrl('') ?>about-us">About</a></li>
+<!-- 					<li><a href="<?php //echo $this->getUrl('') ?>press">Press</a></li> -->
+					<li><a href="<?php echo $this->getUrl('') ?>shipping#faq">FAQs</a></li>
+					<li><a href="<?php echo $this->getUrl('') ?>shipping">Shipping/Returns</a></li>
+					<li><a href="https://rye51.wordpress.com">Blog</a></li>
+					<li><a href="<?php echo $this->getUrl('') ?>shipping#privacy">Privacy</a></li>
+					<li><a href="<?php echo $this->getUrl('') ?>careers">Careers</a></li>
+                    <li><a href="<?php echo $this->getUrl('') ?>about-us#ourstores">Locations</a></li>
+                    <li><a href="<?php echo $this->getUrl('') ?>contacts">Contact</a></li>
+					
+				</ul>
+				<div class="clear"></div>
+				<div class="brLine"></div>
+				<ul>
+					<li><a href="<?php echo $this->getUrl('') ?>shipping#privacy">Connect with us</a></li>
+					<li>
+					    <div class="socialImg">
+                            <a href="https://twitter.com/rye_51_" class="last"><img src="<?php echo Mage::getBaseUrl('media') ?>images/twitter.png" /></a>
+                            <a href="https://plus.google.com/100181047886797930285/about"><img src="<?php echo Mage::getBaseUrl('media') ?>images/google.png" /></a>
+                            <a href="https://www.facebook.com/Rye51"><img src="<?php echo Mage::getBaseUrl('media') ?>images/facebook.png" /></a>
+                            <a href="https://www.pinterest.com/rye51/"><img src="<?php echo Mage::getBaseUrl('media') ?>images/pinterest.png" /></a>
+                            <a href="https://instagram.com/rye51"><img src="<?php echo Mage::getBaseUrl('media') ?>images/instagram_img.png" /></a>
+                        </div>
+                    </li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div class="footerCol2">
+				<div class="newsLtrTag">Sign up for our newsletter.</div>
+				<div>
+					 <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+				</div>
+			</div>
+			
+			<div class="footerCol3">
+				<div class="footerCol3Text">&copy; Rye 51 Textile Distillery</div>
+				
+				    <button class="newsLaterBtn" onclick="window.location.href='http://qcustomclothier.com'"><span><span>Visit Q Custom Clothier <i class="fa fa-chevron-right"></i></span></span></button>
+			    
+            </div>
+			<div class="clear"></div>
+		</div>
+	</div>

@@ -1,0 +1,443 @@
+<div class="page page-dashboard" data-ng-controller="DashboardCtrl">
+    
+    <div class="col-md-12 text-center" ng-show="show_loader"><img src="images/loader.gif" height="25px" width="25px" /></div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span> Upcoming Court Date Within Week</strong>
+            <span ng-show="total_near_courtdate > 5" ng-click="upcommingCourtDateShowAll(total_near_courtdate)" ng-class="show_text_upcomming" class="cursor-pointer pull-right ng-scope glyphicon glyphicon-arrow-down" popover="Show / Hide" popover-trigger="mouseenter"></span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th ng-click="sortMeUpcomming('number', 'number')" class="sortable sortable_1 number">
+                        <div class="th">
+                            CDL # &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Member Status</th>
+                    <th>Member</th>
+                    <th>Attorney</th>
+                    <th ng-click="sortMeUpcomming('ticket_type', 'ticket_type')" class="sortable sortable_1 ticket_type">
+                        <div class="th">
+                            Ticket Type &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeUpcomming('court_county', 'court_county')" class="sortable sortable_1 court_county">
+                        <div class="th">
+                            Court County/State &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeUpcomming('court_datetime', 'court_datetime')" class="sortable sortable_1 court_datetime">
+                        <div class="th">
+                            Court Date &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeUpcomming('status', 'status')" class="sortable sortable_1 status">
+                        <div class="th">
+                            Status &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="service in cdl_list_upcomming">
+                    <td>
+                        <a ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/case/{{service.id}}" class="linked" target="_blank">{{service.number}}</a>
+                        <span ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length == 0">{{service.number}}</span>
+                    </td>
+                    <td>    
+                        <span ng-if="service.member_status == 'Active'" class="label label-success">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Pending'" class="label label-info">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Inactive'" class="label label-warning">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Terminated'" class="label label-danger">{{service.member_status}}</span>
+                    </td>
+                    <td>{{service.memberName}}</td>
+                    <td>{{service.attorneyName}}</td>
+                    <td>{{service.ticket_type}}</td>
+                    <td>{{service.court_county}} {{service.court_state}}</td>
+                    <td>{{service.court_datetime | date:"MMM dd yyyy"}}</td>
+                    <td>
+                        <span ng-if="service.status == 'Ticket Intake'" class="label bg-orange">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending CSR Assignment'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'CSR Assigned'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Court Date'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Confirmation'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'Assigned To Attorney'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Rate Approval'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Closed'" class="label label-danger">{{service.status}}</span>
+                        <span ng-if="service.status == 'Void'" class="label label-primary">{{service.status}}</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type == 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">Ref</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type != 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">PE</span>
+                    </td>
+                    <td>{{service.datecreated | date:"MMM dd yyyy"}}</td>
+                </tr>
+                <tr ng-show="cdl_list_upcomming.length == 0 || !cdl_list_upcomming">
+                    <td colspan="8" class="text-center"><h4>No cases</h4></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span> Day After Court Date</strong>
+            <span ng-show="total_day_after_courtdate > 5" ng-click="dayAfterCourtDateShowAll(total_day_after_courtdate)" ng-class="show_text_dayafter" class="cursor-pointer pull-right ng-scope glyphicon glyphicon-arrow-down" popover="Show / Hide" popover-trigger="mouseenter"></span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th ng-click="sortMeDayAfter('number', 'number_1')" class="sortable sortable_2 number_1">
+                        <div class="th">
+                            CDL # &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Member Status</th>
+                    <th>Member</th>
+                    <th>Attorney</th>
+                    <th ng-click="sortMeDayAfter('ticket_type', 'ticket_type_1')" class="sortable sortable_2 ticket_type_1">
+                        <div class="th">
+                            Ticket Type &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeDayAfter('court_county', 'court_county_1')" class="sortable sortable_2 court_county_1">
+                        <div class="th">
+                            Court County/State &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeDayAfter('court_datetime', 'court_datetime_1')" class="sortable sortable_2 court_datetime_1">
+                        <div class="th">
+                            Court Date &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeDayAfter('status', 'status_1')" class="sortable sortable_2 status_1">
+                        <div class="th">
+                            Status &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="service in cdl_list_day_after">
+                    <td>
+                        <a ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/case/{{service.id}}" class="linked" target="_blank">{{service.number}}</a>
+                        <span ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length == 0">{{service.number}}</span>
+                    </td>
+                    <td>    
+                        <span ng-if="service.member_status == 'Active'" class="label label-success">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Pending'" class="label label-info">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Inactive'" class="label label-warning">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Terminated'" class="label label-danger">{{service.member_status}}</span>
+                    </td>
+                    <td>{{service.memberName}}</td>
+                    <td>{{service.attorneyName}}</td>
+                    <td>{{service.ticket_type}}</td>
+                    <td>{{service.court_county}} {{service.court_state}}</td>
+                    <td>{{service.court_datetime | date:"MMM dd yyyy"}}</td>
+                    <td>
+                        <span ng-if="service.status == 'Ticket Intake'" class="label bg-orange">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending CSR Assignment'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'CSR Assigned'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Court Date'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Confirmation'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'Assigned To Attorney'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Rate Approval'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Closed'" class="label label-danger">{{service.status}}</span>
+                        <span ng-if="service.status == 'Void'" class="label label-primary">{{service.status}}</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type == 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">Ref</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type != 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">PE</span>
+                    </td>
+                    <td>{{service.datecreated | date:"MMM dd yyyy"}}</td>
+                </tr>
+                <tr ng-show="cdl_list_day_after.length == 0 || !cdl_list_day_after">
+                    <td colspan="8" class="text-center"><h4>No cases</h4></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="panel panel-default" ng-show="csr_cases.length > 0">
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span> {{user_info.last_name}} {{user_info.first_name}} Cases</strong>
+            <span ng-show="total_csrOnlyCases > 5" ng-click="csrOnlyCasesShowAll(total_csrOnlyCases)" ng-class="show_text_csr_only" class="cursor-pointer pull-right ng-scope glyphicon glyphicon-arrow-down" popover="Show / Hide" popover-trigger="mouseenter"></span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th ng-click="sortMeCsrOnly('number', 'number_2')" class="sortable sortable_3 number_2">
+                        <div class="th">
+                            CDL # &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Member Status</th>
+                    <th>Member</th>
+                    <th>Attorney</th>
+                    <th ng-click="sortMeCsrOnly('ticket_type', 'ticket_type_2')" class="sortable sortable_3 ticket_type_2">
+                        <div class="th">
+                            Ticket Type &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeCsrOnly('court_county', 'court_county_2')" class="sortable sortable_3 court_county_2">
+                        <div class="th">
+                            Court County/State &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeCsrOnly('court_datetime', 'court_datetime_2')" class="sortable sortable_3 court_datetime_2">
+                        <div class="th">
+                            Court Date &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeCsrOnly('status', 'status_2')" class="sortable sortable_3 status_2">
+                        <div class="th">
+                            Status &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="service in csr_cases">
+                    <td>
+                        <a ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/case/{{service.id}}" class="linked" target="_blank">{{service.number}}</a>
+                        <span ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length == 0">{{service.number}}</span>
+                    </td>
+                    <td>    
+                        <span ng-if="service.member_status == 'Active'" class="label label-success">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Pending'" class="label label-info">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Inactive'" class="label label-warning">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Terminated'" class="label label-danger">{{service.member_status}}</span>
+                    </td>
+                    <td>{{service.memberName}}</td>
+                    <td>{{service.attorneyName}}</td>
+                    <td>{{service.ticket_type}}</td>
+                    <td>{{service.court_county}} {{service.court_state}}</td>
+                    <td>{{service.court_datetime | date:"MMM dd yyyy"}}</td>
+                    <td>
+                        <span ng-if="service.status == 'Ticket Intake'" class="label bg-orange">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending CSR Assignment'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'CSR Assigned'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Court Date'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Confirmation'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'Assigned To Attorney'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Rate Approval'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Closed'" class="label label-danger">{{service.status}}</span>
+                        <span ng-if="service.status == 'Void'" class="label label-primary">{{service.status}}</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type == 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">Ref</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type != 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">PE</span>
+                    </td>
+                    <td>{{service.datecreated | date:"MMM dd yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="panel panel-default" ng-show="no_csr_cases.length > 0">
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span> Pending CSR Assigned</strong>
+            <span ng-show="total_noCsrCases > 5" ng-click="noCsrCases(total_noCsrCases)" ng-class="show_text_no_csr" class="cursor-pointer pull-right ng-scope glyphicon glyphicon-arrow-down" popover="Show / Hide" popover-trigger="mouseenter"></span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th ng-click="sortMeNoCsrCases('number', 'number_3')" class="sortable sortable_4 number_3">
+                        <div class="th">
+                            CDL # &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Member Status</th>
+                    <th>Member</th>
+                    <th>Attorney</th>
+                    <th ng-click="sortMeNoCsrCases('ticket_type', 'ticket_type_3')" class="sortable sortable_4 ticket_type_3">
+                        <div class="th">
+                            Ticket Type &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeNoCsrCases('court_county', 'court_county_3')" class="sortable sortable_4 court_county_3">
+                        <div class="th">
+                            Court County/State &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeNoCsrCases('court_datetime', 'court_datetime_3')" class="sortable sortable_4 court_datetime_3">
+                        <div class="th">
+                            Court Date &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMeNoCsrCases('status', 'status_3')" class="sortable sortable_4 status_3">
+                        <div class="th">
+                            Status &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="service in no_csr_cases">
+                    <td>
+                        <a ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/case/{{service.id}}" class="linked" target="_blank">{{service.number}}</a>
+                        <span ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length == 0">{{service.number}}</span>
+                    </td>
+                    <td>    
+                        <span ng-if="service.member_status == 'Active'" class="label label-success">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Pending'" class="label label-info">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Inactive'" class="label label-warning">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Terminated'" class="label label-danger">{{service.member_status}}</span>
+                    </td>
+                    <td>{{service.memberName}}</td>
+                    <td>{{service.attorneyName}}</td>
+                    <td>{{service.ticket_type}}</td>
+                    <td>{{service.court_county}} {{service.court_state}}</span></td>
+                    <td>{{service.court_datetime | date:"MMM dd yyyy"}}</td>
+                    <td>
+                        <span ng-if="service.status == 'Ticket Intake'" class="label bg-orange">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending CSR Assignment'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'CSR Assigned'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Court Date'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Confirmation'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'Assigned To Attorney'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Rate Approval'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Closed'" class="label label-danger">{{service.status}}</span>
+                        <span ng-if="service.status == 'Void'" class="label label-primary">{{service.status}}</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type == 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">Ref</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type != 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">PE</span>
+                    </td>
+                    <td>{{service.datecreated | date:"MMM dd yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="panel panel-default" ng-show="pendig_cases.length > 0">
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span> Pending Rate Approval</strong>
+            <span ng-show="total_pendingCases > 5" ng-click="pendingCases(total_pendingCases)" ng-class="show_text_pending_cases" class="cursor-pointer pull-right ng-scope glyphicon glyphicon-arrow-down" popover="Show / Hide" popover-trigger="mouseenter"></span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th ng-click="sortMePendingCases('number', 'number_5')" class="sortable sortable_5 number_4">
+                        <div class="th">
+                            CDL # &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Member Status</th>
+                    <th>Member</th>
+                    <th>Attorney</th>
+                    <th ng-click="sortMePendingCases('ticket_type', 'ticket_type_5')" class="sortable sortable_5 ticket_type_4">
+                        <div class="th">
+                            Ticket Type &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMePendingCases('court_county', 'court_county_5')" class="sortable sortable_5 court_county_4">
+                        <div class="th">
+                            Court County/State &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMePendingCases('court_datetime', 'court_datetime_4')" class="sortable sortable_5 court_datetime_4">
+                        <div class="th">
+                            Court Date &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th ng-click="sortMePendingCases('status', 'status_4')" class="sortable sortable_5 status_4">
+                        <div class="th">
+                            Status &nbsp;<i class="fa fa-sort"></i>
+                        </div>
+                    </th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="service in pendig_cases">
+                    <td>
+                        <a ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/case/{{service.id}}" class="linked" target="_blank">{{service.number}}</a>
+                        <span ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length == 0">{{service.number}}</span>
+                    </td>
+                    <td>    
+                        <span ng-if="service.member_status == 'Active'" class="label label-success">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Pending'" class="label label-info">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Inactive'" class="label label-warning">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Terminated'" class="label label-danger">{{service.member_status}}</span>
+                    </td>
+                    <td>{{service.memberName}}</td>
+                    <td>{{service.attorneyName}}</td>
+                    <td>{{service.ticket_type}}</td>
+                    <td>{{service.court_county}} {{service.court_state}}</span></td>
+                    <td>{{service.court_datetime | date:"MMM dd yyyy"}}</td>
+                    <td>
+                        <span ng-if="service.status == 'Ticket Intake'" class="label bg-orange">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending CSR Assignment'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'CSR Assigned'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Court Date'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Confirmation'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'Assigned To Attorney'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Rate Approval'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Closed'" class="label label-danger">{{service.status}}</span>
+                        <span ng-if="service.status == 'Void'" class="label label-primary">{{service.status}}</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type == 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">Ref</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type != 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">PE</span>
+                    </td>
+                    <td>{{service.datecreated | date:"MMM dd yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="panel panel-default" ng-show="cdl_data_group.length > 0" data-ng-repeat="csr_assign_cases in cdl_data_group">
+        
+        <div class="panel-heading">
+            <strong><span class="glyphicon glyphicon-th"></span> {{csr_assign_cases[0].csrName}}</strong>
+            <span ng-show="csr_assign_cases[0].view_more == 'Yes'" ng-click="upcommingCourtDate(total_near_courtdate)" ng-class="show_text_upcomming" class="cursor-pointer pull-right ng-scope glyphicon glyphicon-arrow-down" popover="Show / Hide" popover-trigger="mouseenter"></span>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>CDL #</th>
+                    <th>Member Status</th>
+                    <th>Member</th>
+                    <th>Attorney</th>
+                    <th>Ticket Type</th>
+                    <th>Court County/State</th>
+                    <th>Court Date</th>
+                    <th>Status</th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="service in csr_assign_cases | orderBy: '-id' ">
+                    <td>
+                        <a ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length > 0" href="#/usl/case/{{service.id}}" class="linked" target="_blank">{{service.number}}</a>
+                        <span ng-show="(case_edit_user_access | filter:{value:user_info.designation}).length == 0">{{service.number}}</span>
+                    </td>
+                    <td>    
+                        <span ng-if="service.member_status == 'Active'" class="label label-success">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Pending'" class="label label-info">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Inactive'" class="label label-warning">{{service.member_status}}</span>
+                        <span ng-if="service.member_status == 'Terminated'" class="label label-danger">{{service.member_status}}</span>
+                    </td>
+                    <td>{{service.memberName}}</td>
+                    <td>{{service.attorneyName}}</td>
+                    <td>{{service.ticket_type}}</td>
+                    <td>{{service.court_county}} {{service.court_state}}</span></td>
+                    <td>{{service.court_datetime | date:"MMM dd yyyy"}}</td>
+                    <td>
+                        <span ng-if="service.status == 'Ticket Intake'" class="label bg-orange">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending CSR Assignment'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'CSR Assigned'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Court Date'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Confirmation'" class="label label-info">{{service.status}}</span>
+                        <span ng-if="service.status == 'Assigned To Attorney'" class="label label-success">{{service.status}}</span>
+                        <span ng-if="service.status == 'Pending Rate Approval'" class="label label-warning">{{service.status}}</span>
+                        <span ng-if="service.status == 'Closed'" class="label label-danger">{{service.status}}</span>
+                        <span ng-if="service.status == 'Void'" class="label label-primary">{{service.status}}</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type == 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">Ref</span>
+                        <span ng-if="service.is_referral == 'Yes' && service.ticket_type != 'Referral'" class="label label-default" popover="{{service.referral_reasons}}" popover-trigger="mouseenter" popover-placement="top">PE</span>
+                    </td>
+                    <td>{{service.datecreated | date:"MMM dd yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+
+</div>

@@ -1,0 +1,98 @@
+%%Panel.DOCTYPE%%
+
+<html>
+<head>
+    <title>%%Page.WindowTitle%%</title>
+    <meta charset="%%GLOBAL_CharacterSet%%">
+    <meta name="description" content="%%Page.MetaDescription%%" />
+    <meta name="keywords" content="%%Page.MetaKeywords%%" />
+    %%GLOBAL_AdditionalMetaTags%%
+    %%Page.CanonicalLink%%
+    %%Page.Robots%%
+    %%GLOBAL_HeadFonts%%
+    <link rel="shortcut icon" href="%%GLOBAL_Favicon%%" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+    //<![CDATA[
+        (function(){
+            // this happens before external dependencies (and dom ready) to reduce page flicker
+            var node, i;
+            for (i = window.document.childNodes.length; i--;) {
+                node = window.document.childNodes[i];
+                if (node.nodeName == 'HTML') {
+                    node.className += ' javascript';
+                }
+            }
+        })();
+    //]]>
+    </script>
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="%%ASSET_Styles/animate.css%%">
+    <link rel="stylesheet" href="%%ASSET_Styles/bootstrap.min.css%%">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="%%ASSET_Styles/bootstrap-theme.min.css%%">
+
+        <!-- Owl Carousel Assets -->
+    <link href="%%ASSET_Styles/owl.carousel.css%%" rel="stylesheet">
+    <link href="%%ASSET_Styles/owl.theme.css%%" rel="stylesheet">
+
+    %%GLOBAL_Stylesheets%%
+
+    <!-- Tell the browsers about our RSS feeds -->
+    %%GLOBAL_HeadRSSLinks%%
+
+    <!-- Include visitor tracking code (if any) -->
+    %%GLOBAL_TrackingCode%%
+
+    %%GLOBAL_DesignModeStyleSheet%%
+
+    %%GLOBAL_HeaderImageStyle%%
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53a0ec3a0a9c02ad"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+         
+       
+    
+    <script src="%%GLOBAL_CdnAppPath%%/javascript/menudrop.js?%%GLOBAL_JSCacheToken%%"></script>
+    <script src="%%GLOBAL_CdnAppPath%%/javascript/iselector.js?%%GLOBAL_JSCacheToken%%"></script>
+    <!--<script src="%%GLOBAL_CdnAppPath%%/javascript/jquery/plugins/jquery.flexslider.js"></script>-->
+    <script src="%%GLOBAL_CdnAppPath%%/javascript/viewport.js?%%GLOBAL_JSCacheToken%%"></script>
+
+    <!-- Theme bespoke js -->
+    <script src="%%ASSET_js/matchMedia.js%%"></script>
+    <script src="%%ASSET_js/common.js%%"></script>
+    <script src="%%ASSET_js/jquery.autobox.js%%"></script>
+    <script src="%%ASSET_js/init.js%%"></script>
+    <script src="%%ASSET_js/jquery.uniform.min.js%%"></script>
+    <script src="%%ASSET_js/main.js%%"></script>
+    <script src="%%ASSET_js/quicksearch.js%%"></script>
+     <!-- Latest compiled and minified JavaScript -->
+    <script src="%%ASSET_js/bootstrap.min.js%%"></script>
+    <script src="%%ASSET_js/owl.carousel.min.js%%"></script>
+    <script src="%%ASSET_js/google-web-font.js%%"></script>
+    <script src="%%ASSET_js/jquery-cookie.js%%"></script>
+    <script src="%%ASSET_js/wow.min.js%%"></script>
+    <script src="%%ASSET_js/jquery.countdown.min.js%%"></script>
+    <script src="%%ASSET_js/ella.js%%"></script>
+
+    <script src="%%ASSET_js/instafeed.min.js%%"></script>
+  
+
+
+    <script>
+    //<![CDATA[
+    config.ShopPath = '%%GLOBAL_ShopPath%%';
+    config.AppPath = ''; // BIG-8939: Deprecated, do not use.
+    config.FastCart = %%GLOBAL_FastCart%%;
+    config.ShowCookieWarning = !!%%GLOBAL_ShowCookieWarningMessage%%;
+    var ThumbImageWidth = %%GLOBAL_ProductThumbImageWidth%%;
+    var ThumbImageHeight = %%GLOBAL_ProductThumbImageHeight%%;
+    //]]>
+    </script>
+    %%GLOBAL_AdditionalScriptTags%%
+    %%GLOBAL_RTLStyles%%
+
+    <!--[if lt IE 9]>
+    <script src="%%ASSET_js/html5shiv.js%%"></script>
+    <![endif]-->
+</head>

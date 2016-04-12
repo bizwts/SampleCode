@@ -1,0 +1,235 @@
+<div class="page page-table" data-ng-controller="list_mailgun_email">
+
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Mailgun Logs</strong></div>
+
+        <div class="table-filters">
+            <div class="row">
+                <form name="search_form" novalidate>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text"  data-ng-controller="DatepickerDemoCtrl"
+                                               class="form-control"
+                                               datepicker-popup="MMM dd yyyy"
+                                               data-ng-model="Config.general.searchstartdate"
+                                               is-open="opened"
+                                               min="minDate"
+                                               datepicker-options="dateOptions"
+                                               placeholder="Start Date"
+                                               close-text="Close">
+                                    </div>    
+                                </div>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text"  data-ng-controller="DatepickerDemoCtrl"
+                                               class="form-control"
+                                               datepicker-popup="MMM dd yyyy"
+                                               data-ng-model="Config.general.searchenddate"
+                                               is-open="opened"
+                                               min="minDate"
+                                               datepicker-options="dateOptions"
+                                               placeholder="End Date"
+                                               close-text="Close">
+                                    </div>    
+                                </div>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text"
+                                           placeholder="Search by subject"
+                                           class="form-control"
+                                           ng-model="Config.general.searchsubject"
+                                           >
+                                    </div>    
+                                </div>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                        <input type="text"
+                                           placeholder="Search by tag"
+                                           class="form-control"
+                                           ng-model="Config.general.searchtag"
+                                           >
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-filter"></i></span>
+                                        <select class="form-control" ng-model="Config.general.searchstatus">
+                                        <option value="">All</option>
+                                        <option value="0">Pending</option>
+                                        <option value="1">Delivered</option>
+                                        <option value="2">Opened</option>
+                                        <option value="3">Bounced/Failed</option>
+                                        <option value="5">Complained</option>
+                                    </select>
+                                    </div>    
+                                </div>
+                                <div class="col-sm-3 col-xs-3">
+                                    <button class="btn btn-sm btn-info" type="submit" ng-click="updateTableData()">Search</button>
+                                    <button class="btn btn-sm btn-warning" type="button" ng-click="clearSearch()">Clear</button>
+                                    <button class="btn btn-sm" type="button" ng-click="export()">Export</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <div class="col-sm-5 col-xs-4 pull-right">
+                    <form>
+                        <label class="pull-right text-muted"><em>Total {{total_emails}} Emails</em></label>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover table-responsive small-text">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="th">
+                            To Email &nbsp;
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            From Email &nbsp;
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Subject &nbsp;
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Tag
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Date
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th">
+                            Status &nbsp;
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th action">
+                            Action 
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="(i,mailbox) in current_emails" ng-animate="animate">
+                    <td>{{mailbox.recipient}}</td>
+                    <td>{{mailbox.sender}}</td>
+                    <td>{{mailbox.subject}}</td>
+                    <td>{{mailbox.entity_name}}</td>
+                    <td>{{mailbox.datecreated}}</td>
+                    <td>
+                        <span ng-if="mailbox.msg_status == 0" class="label label-primary">Pending</span>
+                        <span ng-if="mailbox.msg_status == 1" class="label label-info">Delivered</span>
+                        <span ng-if="mailbox.msg_status == 2" class="label label-success">Opened</span>
+                        <span ng-if="mailbox.msg_status == 3 || mailbox.msg_status == 4" class="label label-danger">Bounced/Failed</span>
+                        <span ng-if="mailbox.msg_status == 5" class="label label-warning">Complained</span>
+                    </td>
+                    <td><button class="btn btn-xs btn-info" ng-click="open_email(mailbox.message_id)">View Email</button></td>
+
+                </tr>
+                <tr ng-show="current_emails.length == 0 || !current_emails.length">
+                    <td colspan="8" class="text-center"><h4>No Records Found</h4></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer class="panel-footer" ng-show="!(current_emails.length == 0 || !current_emails.length)">
+            <div class="row">
+                <div class="col-sm-4 hidden-xs">
+                    Show <label><select  ng-model="Config.list.itemperPage" class="form-control input-sm"  ng-change="updateTableData()">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select></label>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <small class="text-muted inline m-t-sm m-b-sm">showing {{Config.list.itemFrom}}-{{Config.list.itemTo}} of {{Config.list.itemTotalCount}} item(s) </small>
+                </div>
+                <div class="col-sm-4 text-right text-center-xs">                
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                        <li><a href="javascript:void(0)" ng-click="getNextData(Config.list.preOffset)" ng-show="Config.list.currentPage > 1"><i class="fa fa-chevron-left"></i></a></li>
+                        <li><a href="javascript:void(0)" ng-repeat="page in Config.list.pagination| limitTo: 5" ng-click="getNextData(page.offset)">{{page.number}}</a></li>
+                        <li><a href="javascript:void(0)" ng-click="getNextData(Config.list.nextOffset)" ng-show="Config.list.currentPage < Config.list.paginationCount"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script type="text/ng-template" id="OpenEmailModal.html">
+            <div class="modal-body">
+            <div class="panel panel-primary">
+            <div class="panel-heading">
+            <strong>{{email_data.subject}}</strong>
+<!--                        <button class="btn btn-sm btn-default add_contact pull-right CsmallBtn ng-scope" ng-if="email_data.recipient == 'info@bluesakianalytics.com'" ng-click="collapse_reply()">Reply</button>-->
+            </div>
+            <div class="panel-body email-popup">
+            <div class="form-group">
+            <div class="row">
+            <div class="col-md-2">To:</div>
+            <div class="col-md-10">{{email_data.recipient}}</div>
+            </div>
+            <div class="row">
+            <div class="col-md-2">From:</div>
+            <div class="col-md-10">{{email_data.from}}</div>
+            </div>
+            <hr/>
+            <div class="row">
+            <div class="col-md-12" data-ng-bind-html="email_data.stripped_html"></div>
+            </div>
+            </div>    
+            </div>
+            </div>
+
+            <div class="panel panel-primary" ng-show="isCollapsed">
+            <div class="panel-heading">
+            <strong>RE: {{email_data.subject}}</strong>
+            </div>
+
+            <div class="panel-body">
+            <div class="form-group">
+            <div class="row">
+            <div class="col-md-2">To:</div>
+            <div class="col-md-10">{{email_data.sender}}</div>
+            </div>
+            <div class="row">
+            <div class="col-md-2">From:</div>
+            <div class="col-md-10">{{email_data.recipient}}</div>
+            </div>
+            <div class="row">
+            <div class="col-md-12"><textarea name="" id="" capitalize data-ng-model="email_obj.email_reply" class="form-control" ></textarea></div>
+            </div>
+            </div>  
+            </div>
+
+            </div>
+
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="reply()" ng-show="isCollapsed">Reply</button>
+            <button class="btn btn-warning" ng-click="deleteCANCEL()">Cancel</button>
+            </div>
+        </script>
+    </section>
+</div>
